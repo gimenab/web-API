@@ -12,6 +12,7 @@ import { ProductsComponent } from './components/products/products.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { CompanyComponent } from './components/company/company.component';
 import { AbmGridComponent } from './components/abm-grid/abm-grid.component';
+import { HomeAdminComponent } from './components/home-admin/home-admin.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { AbmGridComponent } from './components/abm-grid/abm-grid.component';
     ProductsComponent,
     NotFoundComponent,
     CompanyComponent,
-    AbmGridComponent
+    AbmGridComponent,
+    HomeAdminComponent
   ],
   imports: [
     BrowserModule,
