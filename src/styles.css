@@ -1,1 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+
+body{
+  /*font-family: 'Quicksand' ;*/
+font-family: 'Ubuntu' ;
+/*font-family: 'Saira Semi Condensed', ;*/
+
+}
+h1{
+  font-size: 5rem;
+  color:#2E2F57;
+  /*color: #12989A;*/
+}
+
+.btn-outline-success {
+  color: #2E2F57;
+  border-color: #2E2F57;
+}
