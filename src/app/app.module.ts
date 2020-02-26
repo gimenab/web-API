@@ -15,6 +15,9 @@ import { AbmGridComponent } from './components/abm-grid/abm-grid.component';
 import { HomeAdminComponent } from './components/home-admin/home-admin.component';
 import { ContactFormComponent } from './components/contact-form/contact-form.component';
 import { CardComponent } from './components/card/card.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { ProductComponent } from './components/product/product.component';
+import { CompaniesComponent } from './components/companies/companies.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,10 @@ import { CardComponent } from './components/card/card.component';
     AbmGridComponent,
     HomeAdminComponent,
     ContactFormComponent,
-    CardComponent
+    CardComponent,
+    NavbarComponent,
+    ProductComponent,
+    CompaniesComponent
   ],
   imports: [
     BrowserModule,
