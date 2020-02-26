@@ -13,6 +13,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { CompanyComponent } from './components/company/company.component';
 import { AbmGridComponent } from './components/abm-grid/abm-grid.component';
 import { HomeAdminComponent } from './components/home-admin/home-admin.component';
+import { ContactFormComponent } from './components/contact-form/contact-form.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { HomeAdminComponent } from './components/home-admin/home-admin.component
     NotFoundComponent,
     CompanyComponent,
     AbmGridComponent,
-    HomeAdminComponent
+    HomeAdminComponent,
+    ContactFormComponent
   ],
   imports: [
     BrowserModule,
