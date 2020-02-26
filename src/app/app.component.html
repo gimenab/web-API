@@ -1,5 +1,4 @@
-<navbar-client></navbar-client>
-<home></home>
-<card></card>
-<app-products></app-products>
+<navbar-client *ngIf="!admin"></navbar-client>
+<navbar-admin *ngIf="admin"></navbar-admin>
 
+<router-outlet></router-outlet>
