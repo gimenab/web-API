@@ -7,17 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarAdminComponent implements OnInit {
 
+
   constructor() { }
 
   ngOnInit(): void {
-  }
-
-  client(){
-    localStorage.setItem("admin",JSON.stringify(false));
-    }
-
-  admin(){
-    localStorage.setItem("admin",JSON.stringify(true));
   }
 
 }

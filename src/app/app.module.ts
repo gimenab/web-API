@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { ProductsService } from './services/products.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -16,10 +16,10 @@ import { AbmGridComponent } from './components/abm-grid/abm-grid.component';
 import { HomeAdminComponent } from './components/home-admin/home-admin.component';
 import { ContactFormComponent } from './components/contact-form/contact-form.component';
 import { CardComponent } from './components/card/card.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
 import { ProductComponent } from './components/product/product.component';
 import { CompaniesComponent } from './components/companies/companies.component';
 
+import{ FormsModule } from '@angular/Forms';
 import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
@@ -37,16 +37,16 @@ import {HttpClientModule} from '@angular/common/http';
     HomeAdminComponent,
     ContactFormComponent,
     CardComponent,
-    NavbarComponent,
     ProductComponent,
     CompaniesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [ProductsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
