@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -15,6 +16,8 @@ import { AbmGridComponent } from './components/abm-grid/abm-grid.component';
 import { HomeAdminComponent } from './components/home-admin/home-admin.component';
 import { ContactFormComponent } from './components/contact-form/contact-form.component';
 import { CardComponent } from './components/card/card.component';
+
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -34,7 +37,8 @@ import { CardComponent } from './components/card/card.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
