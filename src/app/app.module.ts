@@ -14,6 +14,7 @@ import { CompanyComponent } from './components/company/company.component';
 import { AbmGridComponent } from './components/abm-grid/abm-grid.component';
 import { HomeAdminComponent } from './components/home-admin/home-admin.component';
 import { ContactFormComponent } from './components/contact-form/contact-form.component';
+import { CardComponent } from './components/card/card.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ContactFormComponent } from './components/contact-form/contact-form.com
     CompanyComponent,
     AbmGridComponent,
     HomeAdminComponent,
-    ContactFormComponent
+    ContactFormComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,
