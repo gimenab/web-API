@@ -1,11 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Products } from './../../models/products';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'card',
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.css']
 })
+
 export class CardComponent implements OnInit {
+
+  @Input() product:Products;
 
   constructor() { }
 
