@@ -1,13 +1,11 @@
-import { HttpClient } from '@angular/common/http';
+import { ProductsService } from './services/products.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
-import { NavbarClientComponent } from './components/navbar-client/navbar-client.component';
 import { FormComponent } from './components/form/form.component';
-import { NavbarAdminComponent } from './components/navbar-admin/navbar-admin.component';
 import { SearchComponent } from './components/search/search.component';
 import { ProductsComponent } from './components/products/products.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
@@ -16,18 +14,21 @@ import { AbmGridComponent } from './components/abm-grid/abm-grid.component';
 import { HomeAdminComponent } from './components/home-admin/home-admin.component';
 import { ContactFormComponent } from './components/contact-form/contact-form.component';
 import { CardComponent } from './components/card/card.component';
+import { ProductComponent } from './components/product/product.component';
+import { CompaniesComponent } from './components/companies/companies.component';
 
+import { FormsModule } from '@angular/Forms';
 import {HttpClientModule} from '@angular/common/http';
 import { NotImagePipe } from './pipe/not-image.pipe';
 import { Card2Component } from './components/card2/card2.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    NavbarClientComponent,
     FormComponent,
-    NavbarAdminComponent,
     SearchComponent,
     ProductsComponent,
     NotFoundComponent,
@@ -35,16 +36,22 @@ import { Card2Component } from './components/card2/card2.component';
     AbmGridComponent,
     HomeAdminComponent,
     ContactFormComponent,
-    CardComponent,
-    NotImagePipe,
+    CardComponent, ProductComponent,
+    CompaniesComponent,
+    NavbarComponent,
+     NotImagePipe,
     Card2Component
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    ProductsService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

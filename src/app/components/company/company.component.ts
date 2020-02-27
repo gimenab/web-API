@@ -13,7 +13,7 @@ export class CompanyComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.companyService.getAll2().subscribe(response=>{
+    this.companyService.getAll().subscribe(response=>{
       this.companies=<Companies[]>response;
       console.log(response);
     });

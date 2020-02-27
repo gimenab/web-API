@@ -1,0 +1,23 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto" >
+      <li class="nav-item" routerLinkActive="active" *ngFor="let page of pages">
+        <a class="nav-link" routerLink="/{{page.page}}">{{page.name}}</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {{userSelected.selected}}
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" (click)="onClick()">{{userSelected.notSelected}}</a>
+        </div>
+      </li>
+
+    </ul>
+  </div>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-success my-2 my-sm-0">Search</button>
+    </form>
+</nav>

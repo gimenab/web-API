@@ -7,6 +7,6 @@ import { Injectable } from '@angular/core';
 export class CompanyService extends DataService {
 
   constructor(http: HttpClient) {
-    super(http);
+    super(http,'api/Companies');
    }
 }
