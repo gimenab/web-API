@@ -18,6 +18,8 @@ import { ContactFormComponent } from './components/contact-form/contact-form.com
 import { CardComponent } from './components/card/card.component';
 
 import {HttpClientModule} from '@angular/common/http';
+import { NotImagePipe } from './pipe/not-image.pipe';
+import { Card2Component } from './components/card2/card2.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import {HttpClientModule} from '@angular/common/http';
     AbmGridComponent,
     HomeAdminComponent,
     ContactFormComponent,
-    CardComponent
+    CardComponent,
+    NotImagePipe,
+    Card2Component
   ],
   imports: [
     BrowserModule,

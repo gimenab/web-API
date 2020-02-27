@@ -1,6 +1,5 @@
 import { Products } from './../../models/products';
 import { Component, OnInit, Input } from '@angular/core';
-
 @Component({
   selector: 'card',
   templateUrl: './card.component.html',
