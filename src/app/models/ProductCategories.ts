@@ -1,5 +1,5 @@
 export class ProductCategories{
-  public  producCategorytId:number;
+  public  productCategoryId:number;
   public  categoryName:string;
   public  categoryId:number;
 }
