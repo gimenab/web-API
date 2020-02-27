@@ -12,4 +12,7 @@ export class ABMCurrencyComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  submit(f){
+
+  }
 }
