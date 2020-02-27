@@ -23,6 +23,10 @@ import {HttpClientModule} from '@angular/common/http';
 import { NotImagePipe } from './pipe/not-image.pipe';
 import { Card2Component } from './components/card2/card2.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { CarouselComponent } from './components/carousel/carousel.component';
+import { ABMCurrencyComponent } from './components/abmcurrency/abmcurrency.component';
+import { ABMCategoriesComponent } from './components/abmcategories/abmcategories.component';
+import { ABMCompaniesComponent } from './components/abmcompanies/abmcompanies.component';
 
 
 @NgModule({
@@ -41,7 +45,11 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     CompaniesComponent,
     NavbarComponent,
      NotImagePipe,
-    Card2Component
+    Card2Component,
+    CarouselComponent,
+    ABMCurrencyComponent,
+    ABMCategoriesComponent,
+    ABMCompaniesComponent
 
   ],
   imports: [
