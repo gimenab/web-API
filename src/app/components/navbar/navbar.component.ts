@@ -17,13 +17,13 @@ export class NavbarComponent implements OnInit {
   }
 
   onClick(){
-    if(this.userSelected.selected=='Administrador'){
-      this.pages=[{page:'',name:'Inicio'},{page:'products',name:'Productos'},{page:'company',name:'Empresas'}];
+    if(this.userSelected.selected==='Administrador'){
+      this.pages=[{page:'',name:'Inicio'},{page:'products',name:'Productos'},{page:'companies',name:'Empresas'}];
       this.userSelected={selected:'Cliente',notSelected:'administrador'}
     }
-    if(this.userSelected.selected=='Cliente'){
+    if(this.userSelected.selected==='Cliente'){
       this.pages=[{page:'admin',name:'Inicio'}];
-      this.userSelected={selected:'Administrador',notSelected:'Cliente'}
+      this.userSelected={selected:'Administrador', notSelected:'Cliente'}
     }
   }
 

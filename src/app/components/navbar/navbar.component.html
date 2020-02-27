@@ -1,14 +1,12 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto" *ngFor="let page of pages">
-      <li class="nav-item" routerLinkActive="active">
+    <ul class="navbar-nav mr-auto" >
+      <li class="nav-item" routerLinkActive="active" *ngFor="let page of pages">
         <a class="nav-link" routerLink="/{{page.page}}">{{page.name}}</a>
       </li>
-      </ul>
-      <ul>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           {{userSelected.selected}}
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
