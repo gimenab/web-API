@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  pages:{page:string,name:string}[]=[{page:'',name:'Inicio'},{page:'products',name:'Productos'},{page:'company',name:'Empresas'}];
+  pages:{page:string,name:string}[]=[{page:'',name:'Inicio'},{page:'products',name:'Productos'},{page:'companies',name:'Empresas'}];
   userSelected={selected:'Cliente',notSelected:'Administrador'};
 
   constructor() { }
