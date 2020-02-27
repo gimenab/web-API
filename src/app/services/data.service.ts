@@ -1,13 +1,26 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-@Injectable({
-  providedIn: 'root'
-})
+// @Injectable({
+//   providedIn: 'root'
+// })
 export class DataService {
+  constructor(private http: HttpClient,private url:string) {
 
-  constructor(private http: HttpClient) { }
+  }
+
   getAll() {
-    return this.http.get('https://localhost:44331/api/Products');
+    return this.http.get('https://localhost:44331/'+this.url);
+  }
+  create(resource){
+    return  this.http.post('https://localhost:44331/'+this.url, JSON.stringify(resource));
+  }
+
+  update(resource){
+    return  this.http.put('https://localhost:44331/'+this.url, JSON.stringify(resource));
+  }
+
+  delete(id){
+    return this.http.delete('https://localhost:44331/'+this.url+'/'+id);
   }
 }
