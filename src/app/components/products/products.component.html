@@ -1,6 +1,16 @@
+  <div *ngFor="let category of categories" class="btn-group btn-group-toggle" data-toggle="buttons">
+    <label class="btn btn-secondary active">
+      <input type="radio" name="options" [id]="category.categoryId" checked> {{category.categoryName}}
+    </label>
+  </div>
 
-  <div class="card-columns">
-    <div class="card"*ngFor="let product of products">
-      <card [product]="product"></card>
+  
+  <div class="media">
+    <img src="..." class="align-self-center mr-3" alt="...">
+    <div class="media-body">
+      <h5 class="mt-0">Center-aligned media</h5>
+
+      <p class="mb-0">Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
     </div>
   </div>
+  <br>

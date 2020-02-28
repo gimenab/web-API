@@ -29,6 +29,7 @@ import { ABMCategoriesComponent } from './components/abmcategories/abmcategories
 import { ABMCompaniesComponent } from './components/abmcompanies/abmcompanies.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,7 +50,8 @@ import { ABMCompaniesComponent } from './components/abmcompanies/abmcompanies.co
     CarouselComponent,
     ABMCurrencyComponent,
     ABMCategoriesComponent,
-    ABMCompaniesComponent
+    ABMCompaniesComponent,
+
 
   ],
   imports: [
