@@ -19,14 +19,14 @@ export class NavbarComponent implements OnInit {
 
   onClick(){
     if(this.userSelected.selected=='Administrador'){
-      console.log("1");
       this.pages=[{page:'',name:'Inicio'},{page:'products',name:'Productos'},{page:'companies',name:'Empresas'}];
       this.userSelected={selected:'Cliente',notSelected:'administrador'}
-      this.router.navigate([''])
+
+
+      this.router.navigate(['']);
       return;
     }
     if(this.userSelected.selected=='Cliente'){
-      console.log("2");
       this.pages=[{page:'admin',name:'Inicio'},{page:'abmProducts',name:'Productos'},
       {page:'abmCompanies',name:'Empresas'},{page:'abmCategories',name:'Categorias'},
       {page:'abmCurrencies',name:'Monedas'}];
