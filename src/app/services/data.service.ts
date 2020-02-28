@@ -12,6 +12,9 @@ export class DataService {
   getAll(){
     return this.http.get('https://localhost:44331/'+this.url);
   }
+  get(url:string){
+    return this.http.get('https://localhost:44331/'+url);
+  }
   create(resource){
     return  this.http.post('https://localhost:44331/'+this.url, JSON.stringify(resource));
   }

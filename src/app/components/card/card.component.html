@@ -1,8 +1,6 @@
     <img [src]="product.productLogo | notImage" class="card-img-top" alt="...">
     <div class="card-body">
      <h5><span *ngFor="let category of product.categoryID" class="badge badge-pill badge-dark">{{category.categoryName}}</span></h5>
-
       <h4 class="card-title">{{product.productName}}</h4>
       <p class="card-text">{{product.productDescription}}</p>
-
     </div>
