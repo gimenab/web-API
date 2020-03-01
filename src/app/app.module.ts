@@ -27,6 +27,7 @@ import { CarouselComponent } from './components/carousel/carousel.component';
 import { ABMCurrencyComponent } from './components/abmcurrency/abmcurrency.component';
 import { ABMCategoriesComponent } from './components/abmcategories/abmcategories.component';
 import { ABMCompaniesComponent } from './components/abmcompanies/abmcompanies.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 
@@ -51,6 +52,7 @@ import { ABMCompaniesComponent } from './components/abmcompanies/abmcompanies.co
     ABMCurrencyComponent,
     ABMCategoriesComponent,
     ABMCompaniesComponent,
+    FooterComponent,
 
 
   ],

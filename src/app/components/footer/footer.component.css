@@ -1,0 +1,29 @@
+.footer{
+padding-top:5%;
+padding-bottom: 1%;
+padding-left:5%;
+padding-right: 5%;
+position: fixed;
+left: 0;
+bottom: 0;
+width: 100%;
+background-color: #2E2F57;
+color: white;
+text-align: center;
+
+}
+a{
+  color:white;
+}
+.fab, .fas {
+    float:left;
+    font-weight: 400;
+    font-size: 2rem;
+    text-align: left;
+    display: inline-block;
+    padding-right: 6%;
+    font-style: normal;
+
+}
+
+
