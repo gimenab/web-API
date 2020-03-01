@@ -1,3 +1,4 @@
+
 import { ABMCurrencyComponent } from './components/abmcurrency/abmcurrency.component';
 import { ABMCategoriesComponent } from './components/abmcategories/abmcategories.component';
 import { HomeAdminComponent } from './components/home-admin/home-admin.component';
@@ -12,6 +13,7 @@ import { ProductComponent } from './components/product/product.component';
 import { ABMCompaniesComponent } from './components/abmcompanies/abmcompanies.component';
 
 
+
 const routes: Routes = [
   {path:'',component:HomeComponent},
   {path:'companies',component:CompaniesComponent},
@@ -22,7 +24,8 @@ const routes: Routes = [
   {path:'abmCompanies',component:ABMCompaniesComponent},
   {path:'abmCategories',component:ABMCategoriesComponent},
   {path:'abmCurrencies',component:ABMCurrencyComponent},
-  {path:'**',component:NotFoundComponent}
+  {path:'**',component:NotFoundComponent},
+
 ];
 
 @NgModule({
