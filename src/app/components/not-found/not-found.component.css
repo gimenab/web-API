@@ -1,22 +1,17 @@
 
+.not-found{
+  background-color:#e3ecf1;
+
+}
+
 .title-not-found{
   font-size: 5rem;
   color: #2E2F57;
   /*font-weight: 600;*/
 }
 
-/*no funciona. falta reestablecer el tamano de padre del div not found
-img{
-  border: 5px solid #e3ecf1ec;
-} */
-.not-found{
-  width: 100%;
-  background-color:#e3ecf1;
-  top:0;
-  bottom: 0;
-  left:0;
-  right: 0;
-}
+
+
 .row{
   width: 100%;
   height: auto;
