@@ -1,8 +1,8 @@
 import { ProductCategories } from './ProductCategories';
 
 export class Products {
-    public productid:number;
-		public productName:string;
+    public  productid:number;
+		public  productName:string;
 		public  productDescription:string;
 		public  productLogo:string;
 		public  productWebSite:string;
