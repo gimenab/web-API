@@ -6,7 +6,7 @@ import { CompanyService } from './../../services/company.service';
 import { CategoryService } from './../../services/category.service';
 import { Categories } from './../../models/categories';
 import { ProductsService } from './../../services/products.service';
-import { Products } from 'src/app/models/products';
+import { Products } from './../../models/products';
 import { Component, OnInit } from '@angular/core';
 import { Message } from './../../models/Message';
 import Swal from 'sweetalert2'
@@ -42,6 +42,7 @@ export class ABMProductsComponent implements OnInit {
     this.currencyService.getId(id).subscribe(response=>{
       this.currency=<Currency>response;
     })
+    return this.currency.currencyDescription;
   }
 
   getProducts(id:number){
@@ -49,9 +50,15 @@ export class ABMProductsComponent implements OnInit {
       this.products=<Products[]>resposne;
     })
   }
+  categoryProduct(product:Products,categoryId:number){
+    let prodCat:ProductCategories;
+    prodCat.categoryId=categoryId;
+    product.categoryID.push(prodCat)
+  }
 
   add(product:Products){
-    product.categoryID.push();
+    let prodCat:ProductCategories;
+    product.categoryID.push(prodCat);
   }
   remove(product:Products,i:number){
     product.categoryID.splice(i,1);
@@ -60,6 +67,8 @@ export class ABMProductsComponent implements OnInit {
   create(){
     this.product=new Products();
     this.createUpdate=false;
+    let prodCat:ProductCategories;
+    this.product.categoryID.push(prodCat);
   }
 
   delete(id:number){
