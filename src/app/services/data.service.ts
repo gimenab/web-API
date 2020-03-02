@@ -16,14 +16,14 @@ export class DataService {
     return this.http.get('http://localhost:44331/'+url);
   }
   create(resource){
-    return  this.http.post('http://localhost:44331/'+this.url, JSON.stringify(resource));
+    return  this.http.post(this.url, JSON.stringify(resource));
   }
 
   update(resource){
-    return  this.http.put('http://localhost:44331/'+this.url, JSON.stringify(resource));
+    return  this.http.put(this.url, JSON.stringify(resource));
   }
 
   delete(id){
-    return this.http.delete('http://localhost:44331/'+this.url+'/'+id);
+    return this.http.delete(this.url+'/'+id);
   }
 }
