@@ -7,15 +7,15 @@
       <table class="table">
         <thead class="thead-dark">
           <tr>
-            <th scope="col">#Id</th>
             <th scope="col">Codigo</th>
+            <th scope="col">Descripcion</th>
             <th scope="col"></th>
           </tr>
         </thead>
         <tbody>
           <tr  *ngFor="let currencyTable of currencies">
-            <th scope="row">{{currencyTable}}</th>
-            <td>{{currencyTable}}</td>
+            <td>{{currencyTable.currencyCode}}</td>
+            <td>{{currencyTable.currencyDescription}}</td>
             <td>
               <button type="button" class="btn btn-danger" (click)="delete(currencyTable.currencyId)"><i class="far fa-trash-alt"></i></button>
               <button type="button" class="btn btn-primary" (click)="Update(currencyTable.currencyId)"><i class="far fa-edit"></i></button>

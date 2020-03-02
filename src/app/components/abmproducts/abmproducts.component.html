@@ -1,1 +1,86 @@
-<p>abmproducts works!</p>
+<div class="main-container">
+  <div class="row">
+
+    <div class="col-md-6">
+      <button type="button" class="btn btn-success" (click)="create()"><i class="fas fa-plus-circle"></i></button>
+
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Logo</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Precio</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr  *ngFor="let prodcutTable of products">
+            <td>{{prodcutTable.productLogo}}</td>
+            <td>{{prodcutTable.productName}}</td>
+            <td>{{product.currencyId + prodcutTable.productPrice}}</td>
+            <td>
+              <button type="button" class="btn btn-danger" (click)="delete(prodcutTable.productid)"><i class="far fa-trash-alt"></i></button>
+              <button type="button" class="btn btn-primary" (click)="Update(prodcutTable.productid)"><i class="far fa-edit"></i></button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+    <div class="col-md-6">
+      <form #f="ngForm" (ngSubmit)="submit(f)">
+
+        <label for="productName">Nombre:</label>
+        <input [disabled]="createUpdate" #name="ngModel" type="text" name="name" [(ngModel)]="product.productName" class="form-control" required minlength="3">
+
+          <div *ngIf="!name.valid && name.touched" class="alert alert-danger">
+            <div *ngIf="name.errors.required" >El nombre es requerido</div>
+            <div *ngIf="name.errors.minlength" >
+              El nombre debe tener al menos {{name.errors.minlength.requiredLength}} letras
+            </div>
+          </div>
+
+
+          <label for="productDescription">Descripcion:</label>
+          <input [disabled]="createUpdate" #description="ngModel"  name="description" type="text" [(ngModel)]="product.productDescription" class="form-control">
+
+          <label for="productLogo">Logo del producto:</label>
+          <input [disabled]="createUpdate" #logo="ngModel"  name="logo" type="text" [(ngModel)]="product.productLogo" class="form-control">
+
+          <label for="productWebSite">sitio web de referencia:</label>
+          <input [disabled]="createUpdate" #webSite="ngModel"  name="webSite" type="text" [(ngModel)]="product.productWebSite" class="form-control">
+
+          <!-- cambiar por un combo -->
+          <label for="companyId">Compañia:</label>
+          <input [disabled]="createUpdate" #company="ngModel"  name="company" type="text" [(ngModel)]="product.companyId" class="form-control">
+
+          <!-- cambiar por un combo -->
+          <label for="currencyId">Tipo de moneda:</label>
+          <select id="selectCategory"  name="category" class="form-control" *ngFor="let category of categories">
+            <option [value]="category.categoryId">{{category.categoryName}}</option>
+          </select>
+          <input [disabled]="createUpdate" #currency="ngModel"  name="currency" type="text" [(ngModel)]="product.currencyId" class="form-control">
+
+          <label for="productPrice">Precio:</label>
+          <input [disabled]="createUpdate" #price="ngModel"  name="price" type="text" [(ngModel)]="product.productPrice" class="form-control">
+
+
+          <!-- cambiar por un combo -->
+          <div class="row">
+            <label for="categoryID">Categorias:</label>
+            <select id="selectCategory"  name="category" class="form-control" *ngFor="let item of product.categoryID">
+              <option  *ngFor="let category of categories" [value]="category.categoryId">{{category.categoryName}}</option>
+            </select>
+            <button type="button" class="btn btn-light  round">Light</button>
+            <button type="button" class="btn btn-light  round">Light</button>
+          </div>
+
+          <input [disabled]="createUpdate" #categories="ngModel"  name="categories" type="text" [(ngModel)]="product.categoryID" class="form-control">
+
+          <br>
+        <button class="btn btn-primary" [disabled]="!f.valid">Sumit</button>
+      </form>
+    </div>
+  </div>
+</div>
+
