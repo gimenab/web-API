@@ -1,0 +1,17 @@
+.col{
+  background-color: red;
+}
+
+.create-category{
+  text-align: right;
+  margin-bottom: 3%;
+}
+td{
+  text-align: right;
+}
+.btn{
+  margin-left: 3%;
+}
+.form-control.ng-touched.ng-invalid{
+  border:2px solid red;
+}
