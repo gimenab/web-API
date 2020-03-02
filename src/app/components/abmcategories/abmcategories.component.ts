@@ -1,6 +1,10 @@
 import { CategoryService } from './../../services/category.service';
 import { Categories } from './../../models/categories';
 import { Component, OnInit } from '@angular/core';
+//import { Message } from '@angular/compiler/src/i18n/i18n_ast';
+import { Message } from './../../models/Message';
+import Swal from 'sweetalert2';
+import 'sweetalert2/src/sweetalert2.scss';
 
 
 @Component({
@@ -13,6 +17,8 @@ export class ABMCategoriesComponent implements OnInit {
   categories:Categories[];
   categoryFather:Categories[];
   selectCategory = [{string : 'categoryName'}];
+  message:Message=new Message(Swal);
+  createUpdate: boolean;
 
 
 
@@ -31,16 +37,254 @@ export class ABMCategoriesComponent implements OnInit {
   }
   create(){
     this.category=new Categories();
+    this.createUpdate=false;
   }
 
-  update(){
 
+   delete(id:number){
+    this.message.success='delete';
+    Swal.fire({
+      title: '¿Esta seguro que desea eliminar?',
+      text: "Considere que al eliminar afectara los productos que aun posean este tipo de moneda",
+      icon: 'warning',
+      showClass: {
+        popup: 'animated fadeInDown faster'
+      },
+      hideClass: {
+        popup: 'animated fadeOutUp faster'
+      },
+      showCancelButton: true,
+      cancelButtonText: 'Cancelar',
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, Estos seguro.'
+    }).then((result) => {
+      if (result.value) {
+         this.categoryService.delete(id).subscribe(response=>{
+           if(response=='ok'){
+            this.message.alertConfirm();
+          }else{
+           if(response=='exists'){
+              this.message.error=true;
+              this.message.alertError();
+            }else{
+              this.message.alertError();
+            }
+          }
+        });
+      }
+    });
   }
-  delete(){
+  update(id:number){
+        let aux:Categories;
+        this.message.success="update";
+         this.categoryService.get('api/Categories/'+id).subscribe(response=>{
+          aux=<Categories>response;
+          if(aux.categoryId==-1){
+            this.message.alertError();
+            return;
+          }
+          this.category=aux;
+          this.createUpdate=true;
+         });
 
-  }
-
+      }
   submit(f){
+    let aux:Categories;
+
+     if(this.currency.currencyId==0){       this.message.success='create';       this.currencyService.create(this.currency).subscribe(response=>{
+         aux=<Category>response;
+         if(aux.categoriesId>0){
+           this.message.alertConfirm();
+          this.categories=new Currency();
+           this.createUpdate=true;
+           return;
+        }
+
+         else{
+           if(aux.categoriesId==0){
+            this.message.error=true;
+           this.message.alertError();
+       return;
+         }else{
+             this.message.alertError();
+                          return;
+                          }
+                           }
+                            });
+     }
+
+
+    else{
+       this.message.success='update';
+      this.catergoryService.update(this.currency).subscribe(response=>{
+         aux=<Category>response;
+         if(aux.currencyId>0){
+          this.message.alertConfirm();
+          this.currency=new Currency();
+          this.createUpdate=true;
+          return;
+        }
+
+        else{
+          if(aux.currencyId==0){
+            this.message.error=true;
+            this.message.alertError();
+            return;
+          }else{
+            this.message.alertError();
+            return;
+          }
+        }
+      })
+    }
+
+  }
+
+
+}
+
 
   }
 }
+
+
+// import { CurrencyService } from './../../services/currency.service';
+// import { Currency } from './../../models/Currency';
+// import { Component, OnInit } from '@angular/core';
+// import { Message } from './../../models/Message';
+// import Swal from 'sweetalert2'
+// import 'sweetalert2/src/sweetalert2.scss'
+
+// @Component({
+//   selector: 'app-abmcurrency',
+//   templateUrl: './abmcurrency.component.html',
+//   styleUrls: ['./abmcurrency.component.css']
+// })
+// export class ABMCurrencyComponent implements OnInit {
+
+//   currency:Currency= new Currency();
+//   currencies:Currency[];
+//   createUpdate:boolean=true;
+//   message:Message=new Message(Swal);
+
+//   constructor(private currencyService:CurrencyService) { }
+
+//   ngOnInit(): void {
+//     this.currencyService.getAll().subscribe(response=>{
+//       this.currencies=<Currency[]>response;
+//     })
+//   }
+
+//   create(){
+//     this.currency=new Currency();
+//     this.createUpdate=false;
+//   }
+
+//   delete(id:number){
+//     this.message.success='delete';
+//     Swal.fire({
+//       title: '¿Esta seguro que desea eliminar?',
+//       text: "Considere que al eliminar afectara los productos que aun posean este tipo de moneda",
+//       icon: 'warning',
+//       showClass: {
+//         popup: 'animated fadeInDown faster'
+//       },
+//       hideClass: {
+//         popup: 'animated fadeOutUp faster'
+//       },
+//       showCancelButton: true,
+//       cancelButtonText: 'Cancelar',
+//       confirmButtonColor: '#3085d6',
+//       cancelButtonColor: '#d33',
+//       confirmButtonText: 'Si, Estos seguro.'
+//     }).then((result) => {
+//       if (result.value) {
+//          this.currencyService.delete(id).subscribe(response=>{
+//            if(response=='ok'){
+//             this.message.alertConfirm();
+//           }else{
+//            if(response=='exists'){
+//               this.message.error=true;
+//               this.message.alertError();
+//             }else{
+//               this.message.alertError();
+//             }
+//           }
+//         })
+//       }
+//     })
+//   }
+
+//   Update(id:number){
+//     let aux:Currency;
+//     this.message.success="update";
+//     this.currencyService.get('api/Currencies/'+id).subscribe(response=>{
+//       aux=<Currency>response;
+//       if(aux.currencyId==-1){
+//         this.message.alertError();
+//         return;
+//       }
+//       this.currency=aux;
+//       this.createUpdate=true;
+//     })
+//   }
+
+//   submit(f){
+//     let aux:Currency;
+
+//     if(this.currency.currencyId==0){
+//       this.message.success='create';
+//       this.currencyService.create(this.currency).subscribe(response=>{
+//         aux=<Currency>response;
+
+//         if(aux.currencyId>0){
+//           this.message.alertConfirm();
+//           this.currency=new Currency();
+//           this.createUpdate=true;
+//           return;
+//         }
+
+//         else{
+//           if(aux.currencyId==0){
+//             this.message.error=true;
+//             this.message.alertError();
+//             return;
+//           }else{
+//             this.message.alertError();
+//             return;
+//           }
+//         }
+//       })
+//     }
+
+
+//     else{
+//       this.message.success='update';
+//       this.currencyService.update(this.currency).subscribe(response=>{
+//         aux=<Currency>response;
+
+//         if(aux.currencyId>0){
+//           this.message.alertConfirm();
+//           this.currency=new Currency();
+//           this.createUpdate=true;
+//           return;
+//         }
+
+//         else{
+//           if(aux.currencyId==0){
+//             this.message.error=true;
+//             this.message.alertError();
+//             return;
+//           }else{
+//             this.message.alertError();
+//             return;
+//           }
+//         }
+//       })
+//     }
+
+//   }
+
+
+// }
