@@ -7,7 +7,8 @@ import {Router} from '@angular/router';
   styleUrls: ['./not-found.component.css']
 })
 export class NotFoundComponent implements OnInit {
-  imageUrl = 'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/dead-robot-on-back-royalty-free-image-1574095935.jpg?resize=768:*';
+  // imageUrl = 'https://cdn131.picsart.com/284432217032211.png?type=webp&to=min&r=640';
+  imageUrl='https://blog.najmanowicz.com/wp-content/uploads/2015/04/boxy_robot_searching_400_clr_14606.png';
 
 
   constructor(private router:Router) {

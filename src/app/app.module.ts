@@ -11,7 +11,6 @@ import { SearchComponent } from './components/search/search.component';
 import { ProductsComponent } from './components/products/products.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { CompanyComponent } from './components/company/company.component';
-import { AbmGridComponent } from './components/abm-grid/abm-grid.component';
 import { HomeAdminComponent } from './components/home-admin/home-admin.component';
 import { ContactFormComponent } from './components/contact-form/contact-form.component';
 import { CardComponent } from './components/card/card.component';
@@ -27,6 +26,11 @@ import { CarouselComponent } from './components/carousel/carousel.component';
 import { ABMCurrencyComponent } from './components/abmcurrency/abmcurrency.component';
 import { ABMCategoriesComponent } from './components/abmcategories/abmcategories.component';
 import { ABMCompaniesComponent } from './components/abmcompanies/abmcompanies.component';
+<<<<<<< HEAD
+import { ABMProductsComponent } from './components/abmproducts/abmproducts.component';
+=======
+import { FooterComponent } from './components/footer/footer.component';
+>>>>>>> 7eaff62a2d20678b83c65dfb4687436d16f4f478
 
 
 
@@ -39,7 +43,6 @@ import { ABMCompaniesComponent } from './components/abmcompanies/abmcompanies.co
     ProductsComponent,
     NotFoundComponent,
     CompanyComponent,
-    AbmGridComponent,
     HomeAdminComponent,
     ContactFormComponent,
     CardComponent, ProductComponent,
@@ -51,6 +54,11 @@ import { ABMCompaniesComponent } from './components/abmcompanies/abmcompanies.co
     ABMCurrencyComponent,
     ABMCategoriesComponent,
     ABMCompaniesComponent,
+<<<<<<< HEAD
+    ABMProductsComponent,
+=======
+    FooterComponent,
+>>>>>>> 7eaff62a2d20678b83c65dfb4687436d16f4f478
 
 
   ],
