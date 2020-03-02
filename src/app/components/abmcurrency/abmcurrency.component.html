@@ -1,51 +1,49 @@
 <div class="main-container">
   <div class="row">
 
-    <div class="col-md-6">
-      <button type="button" class="btn btn-success pull-right"><i class="fas fa-plus-circle"></i></button>
+    <div class="col-md-5">
+      <button type="button" class="btn btn-success" (click)="create()"><i class="fas fa-plus-circle"></i></button>
+
       <table class="table">
         <thead class="thead-dark">
           <tr>
-            <th scope="col">#Id</th>
             <th scope="col">Codigo</th>
+            <th scope="col">Descripcion</th>
             <th scope="col"></th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>prueba</td>
-            <td>prueba</td>
+          <tr  *ngFor="let currencyTable of currencies">
+            <td>{{currencyTable.currencyCode}}</td>
+            <td>{{currencyTable.currencyDescription}}</td>
             <td>
-              <button type="button" class="btn btn-primary"><i class="far fa-edit"></i></button>
-              <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
+              <button type="button" class="btn btn-danger" (click)="delete(currencyTable.currencyId)"><i class="far fa-trash-alt"></i></button>
+              <button type="button" class="btn btn-primary" (click)="Update(currencyTable.currencyId)"><i class="far fa-edit"></i></button>
             </td>
           </tr>
         </tbody>
       </table>
 
     </div>
-
-    <div class="col-md-6">
-
-      <form #f="ngForm" (ngSubmit)="submit(f)" >
+    <div class="col-md-2"></div>
+    <div class="col-md-5 center">
+      <form #f="ngForm" (ngSubmit)="submit(f)">
           <label for="currenCode">Codigo de la moneda:</label>
-          <input #currenCode type="text" [(ngModel)]="currency.currencyCode" class="form-control" required minlength="3">
+          <input [disabled]="createUpdate" #code="ngModel" type="text" name="code" [(ngModel)]="currency.currencyCode" class="form-control" required minlength="3">
 
-          <div *ngIf="!currenCode.valid && currenCode.touched" class="alert alert-danger">
-            <div *ngIf="currenCode.errors.required" >El codigo es requerido</div>
-            <div *ngIf="currenCode.errors.minlength" >
-              El codigo debe tener al menos {{currenCode.errors.minlength.requiredLength}} letras
+          <div *ngIf="!code.valid && code.touched" class="alert alert-danger">
+            <div *ngIf="code.errors.required" >El codigo es requerido</div>
+            <div *ngIf="code.errors.minlength" >
+              El codigo debe tener al menos {{code.errors.minlength.requiredLength}} letras
             </div>
-
-            <label for="currencyDescription">Descripcion:</label>
-            <input #currencyDescription type="text" [(ngModel)]="currency.currencyDescription" class="form-control">
-
           </div>
+
+          <label for="currencyDescription">Descripcion:</label>
+          <input [disabled]="createUpdate" #description="ngModel"  name="description" type="text" [(ngModel)]="currency.currencyDescription" class="form-control">
+
+          <br>
         <button class="btn btn-primary" [disabled]="!f.valid">Sumit</button>
       </form>
     </div>
-
   </div>
 </div>
-
