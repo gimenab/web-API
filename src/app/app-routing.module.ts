@@ -12,6 +12,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ABMCompaniesComponent } from './components/abmcompanies/abmcompanies.component';
 
 
+
 const routes: Routes = [
   {path:'',component:HomeComponent},
   {path:'companies',component:CompaniesComponent},
