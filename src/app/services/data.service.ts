@@ -10,20 +10,20 @@ export class DataService {
   }
 
   getAll(){
-    return this.http.get('https://localhost:44331/'+this.url);
+    return this.http.get(this.url);
   }
   get(url:string){
-    return this.http.get('https://localhost:44331/'+url);
+    return this.http.get('http://localhost:44331/'+url);
   }
   create(resource){
-    return  this.http.post('https://localhost:44331/'+this.url, JSON.stringify(resource));
+    return  this.http.post('http://localhost:44331/'+this.url, JSON.stringify(resource));
   }
 
   update(resource){
-    return  this.http.put('https://localhost:44331/'+this.url, JSON.stringify(resource));
+    return  this.http.put('http://localhost:44331/'+this.url, JSON.stringify(resource));
   }
 
   delete(id){
-    return this.http.delete('https://localhost:44331/'+this.url+'/'+id);
+    return this.http.delete('http://localhost:44331/'+this.url+'/'+id);
   }
 }

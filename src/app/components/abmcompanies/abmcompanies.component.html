@@ -1,1 +1,55 @@
-<p>abmcompanies works!</p>
+<div class="main-container">
+  <div class="row">
+
+    <div class="col-md-6">
+      <button type="button" class="btn btn-success pull-right"><i class="fas fa-plus-circle"></i></button>
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#Id</th>
+            <th scope="col">Codigo</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>prueba</td>
+            <td>prueba</td>
+            <td>
+              <button type="button" class="btn btn-primary"><i class="far fa-edit"></i></button>
+              <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+
+    <div class="col-md-6">
+
+      <form #f="ngForm" (ngSubmit)="submit(f)" >
+          <label for="companyName">Nombre de la compañía:</label>
+          <input #companyName type="text" [(ngModel)]="company.companyName" class="form-control" required minlength="3">
+
+          <label for="companyFoundationDate">Fecha de fundación de la compañía:</label>
+          <input #companyFoundationDate type="text" [(ngModel)]="company.companyId" class="form-control" required minlength="3">
+
+          <!-- <div *ngIf="!companyId.valid && companyId.touched" class="alert alert-danger">
+            <div *ngIf="companyId.errors.required" >El codigo es requerido</div>
+            <div *ngIf="companyId.errors.minlength" >
+              El id debe tener al menos {{companyId.errors.minlength.requiredLength}} letras
+            </div>
+
+            <label for="companyDescription">Descripcion:</label>
+            <input #currencyDescription type="text" [(ngModel)]="company.companyDescription" class="form-control">
+
+          </div> -->
+        <button class="btn btn-primary" [disabled]="!f.valid">Sumit</button>
+      </form>
+    </div>
+
+  </div>
+</div>
+
+

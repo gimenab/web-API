@@ -1,7 +1,7 @@
 export class Companies {
   public  companyId: number;
 		public  companyName:string;
-		public  companyFoundationDate:string;
+		public  companyFoundationDate:Date;
 		public  companyAddress: string;
 		public  companyCity:string;
 		public  companyWebSite:string;

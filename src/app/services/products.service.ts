@@ -10,6 +10,6 @@ export class ProductsService extends DataService {
 
 
   constructor(http: HttpClient) {
-    super(http, 'api/Products');
+    super(http, 'http://localhost:44331/api/Products');
    }
 }

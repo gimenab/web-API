@@ -1,3 +1,5 @@
+import { CompanyService } from './../../services/company.service';
+import { Companies } from './../../models/companies';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ABMCompaniesComponent implements OnInit {
 
-  constructor() { }
+
+  company: Companies;
+  companies: Companies[];
+
+  constructor(private companyService:CompanyService) { }
 
   ngOnInit(): void {
+    this.companyService.getAll().subscribe(response=>{
+      this.companies=<Companies[]>response;
+    })
   }
 
+
+  submit(f){
+
+  }
 }
+
+
