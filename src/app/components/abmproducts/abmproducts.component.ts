@@ -1,3 +1,5 @@
+import { Currency } from './../../models/Currency';
+import { ProductCategories } from './../../models/ProductCategories';
 import { CurrencyService } from './../../services/currency.service';
 import { Companies } from './../../models/companies';
 import { CompanyService } from './../../services/company.service';
@@ -9,7 +11,6 @@ import { Component, OnInit } from '@angular/core';
 import { Message } from './../../models/Message';
 import Swal from 'sweetalert2'
 import 'sweetalert2/src/sweetalert2.scss'
-import { Currency } from 'src/app/models/Currency';
 
 @Component({
   selector: 'app-abmproducts',
@@ -24,15 +25,37 @@ export class ABMProductsComponent implements OnInit {
   message:Message=new Message(Swal);
   categories:Categories[]=[];
   companies:Companies[]=[];
+  CompaniesSelected:Companies[]=[];
   currencies:Currency[]=[];
+  currency:Currency;
 
   constructor(private productsService:ProductsService, private categoryService:CategoryService,
               private companyService:CompanyService, private currencyService:CurrencyService) { }
 
   ngOnInit(): void {
-
+    this.companyService.getAll().subscribe(response=>{
+      this.companies=<Companies[]>response;
+    })
   }
 
+  getcode(id:number){
+    this.currencyService.getId(id).subscribe(response=>{
+      this.currency=<Currency>response;
+    })
+  }
+
+  getProducts(id:number){
+    this.productsService.get('api/Products/Companies/'+id).subscribe(resposne=>{
+      this.products=<Products[]>resposne;
+    })
+  }
+
+  add(product:Products){
+    product.categoryID.push();
+  }
+  remove(product:Products,i:number){
+    product.categoryID.splice(i,1);
+  }
 
   create(){
     this.product=new Products();

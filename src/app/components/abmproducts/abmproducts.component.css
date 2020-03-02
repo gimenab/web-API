@@ -14,6 +14,14 @@ button{
   left: 0px;
 }
 
-round {
+.round {
   border-radius: 10px;
+}
+
+.red{
+  color: red;
+}
+
+.green{
+  color: green;
 }

@@ -2,6 +2,10 @@
   <div class="row">
 
     <div class="col-md-6">
+      <label for="companyId">Compañia:</label>
+          <select  class="form-control" *ngFor="let company of CompaniesSelected">
+            <option (click)="getProducts(company.companyId)">{{company.companyName}}</option>
+          </select>
       <button type="button" class="btn btn-success" (click)="create()"><i class="fas fa-plus-circle"></i></button>
 
       <table class="table">
@@ -17,7 +21,7 @@
           <tr  *ngFor="let prodcutTable of products">
             <td>{{prodcutTable.productLogo}}</td>
             <td>{{prodcutTable.productName}}</td>
-            <td>{{product.currencyId + prodcutTable.productPrice}}</td>
+            <td>{{getcode(prodcutTable.currencyId)}} {{prodcutTable.productPrice}}</td>
             <td>
               <button type="button" class="btn btn-danger" (click)="delete(prodcutTable.productid)"><i class="far fa-trash-alt"></i></button>
               <button type="button" class="btn btn-primary" (click)="Update(prodcutTable.productid)"><i class="far fa-edit"></i></button>
@@ -50,32 +54,32 @@
           <label for="productWebSite">sitio web de referencia:</label>
           <input [disabled]="createUpdate" #webSite="ngModel"  name="webSite" type="text" [(ngModel)]="product.productWebSite" class="form-control">
 
-          <!-- cambiar por un combo -->
+
           <label for="companyId">Compañia:</label>
-          <input [disabled]="createUpdate" #company="ngModel"  name="company" type="text" [(ngModel)]="product.companyId" class="form-control">
-
-          <!-- cambiar por un combo -->
-          <label for="currencyId">Tipo de moneda:</label>
-          <select id="selectCategory"  name="category" class="form-control" *ngFor="let category of categories">
-            <option [value]="category.categoryId">{{category.categoryName}}</option>
+          <select id="selectCompany"  [(ngModel)]="product.companyId"  [disabled]="createUpdate" #company  name="company" class="form-control" *ngFor="let company of companies">
+            <option [value]="company.companyId">{{company.companyName}}</option>
           </select>
-          <input [disabled]="createUpdate" #currency="ngModel"  name="currency" type="text" [(ngModel)]="product.currencyId" class="form-control">
-
-          <label for="productPrice">Precio:</label>
-          <input [disabled]="createUpdate" #price="ngModel"  name="price" type="text" [(ngModel)]="product.productPrice" class="form-control">
 
 
-          <!-- cambiar por un combo -->
           <div class="row">
-            <label for="categoryID">Categorias:</label>
-            <select id="selectCategory"  name="category" class="form-control" *ngFor="let item of product.categoryID">
-              <option  *ngFor="let category of categories" [value]="category.categoryId">{{category.categoryName}}</option>
+            <label for="currencyId">Tipo de moneda:</label>
+            <select id="selectCurrency"  [disabled]="createUpdate"  [(ngModel)]="product.currencyId"  #currency  name="currency" class="form-control" *ngFor="let currency of currencies">
+              <option [value]="currency.currencyId">{{currency.currencyDescription}}</option>
             </select>
-            <button type="button" class="btn btn-light  round">Light</button>
-            <button type="button" class="btn btn-light  round">Light</button>
+
+            <label for="productPrice">Precio:</label>
+            <input [disabled]="createUpdate" #price="ngModel"  name="price" type="text" [(ngModel)]="product.productPrice" class="form-control">
           </div>
 
-          <input [disabled]="createUpdate" #categories="ngModel"  name="categories" type="text" [(ngModel)]="product.categoryID" class="form-control">
+
+          <div class="row">
+            <label for="categoryID">Categorias:</label>
+            <select id="selectCategory" #category name="category" class="form-control" *ngFor="let item of product.categoryID; let i=index">
+              <option  *ngFor="let category of categories" [value]="category.categoryId">{{category.categoryName}}</option>
+              <button type="button" class="btn btn-light  round" (click)="remove(product,i)"><i class="far fa-minus-square red"></i></button>
+            </select>
+            <button type="button" class="btn btn-light  round" (click)="add(product)"><i class="fas fa-plus-circle green"></i></button>
+          </div>
 
           <br>
         <button class="btn btn-primary" [disabled]="!f.valid">Sumit</button>

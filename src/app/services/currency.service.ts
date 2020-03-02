@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 })
 export class CurrencyService extends DataService {
 
-  constructor(http:HttpClient) { 
+  constructor(http:HttpClient) {
     super(http,'api/Currencies');
   }
 }
