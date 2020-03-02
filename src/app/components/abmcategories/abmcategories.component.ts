@@ -90,54 +90,56 @@ export class ABMCategoriesComponent implements OnInit {
 
       }
   submit(f){
-    let aux:Categories;
+    // let aux:Categories;
 
-     if(this.currency.currencyId==0){       this.message.success='create';       this.currencyService.create(this.currency).subscribe(response=>{
-         aux=<Category>response;
-         if(aux.categoriesId>0){
-           this.message.alertConfirm();
-          this.categories=new Currency();
-           this.createUpdate=true;
-           return;
-        }
+    //  if(this.categories.categoriesId==0){
+    //    this.message.success='create';
+    //    this.categoryService.create(this.currency).subscribe(response=>{
+    //      aux=<Category>response;
+    //      if(aux.categoriesId>0){
+    //        this.message.alertConfirm();
+    //       this.categories=new Categories();
+    //        this.createUpdate=true;
+    //        return;
+    //     }
 
-         else{
-           if(aux.categoriesId==0){
-            this.message.error=true;
-           this.message.alertError();
-       return;
-         }else{
-             this.message.alertError();
-                          return;
-                          }
-                           }
-                            });
-     }
+    //      else{
+    //        if(aux.categoryId==0){
+    //         this.message.error=true;
+    //        this.message.alertError();
+    //    return;
+    //      }else{
+    //          this.message.alertError();
+    //                       return;
+    //                       }
+    //                        }
+    //                         });
+    //  }
 
 
-    else{
-       this.message.success='update';
-      this.catergoryService.update(this.currency).subscribe(response=>{
-         aux=<Category>response;
-         if(aux.currencyId>0){
-          this.message.alertConfirm();
-          this.currency=new Currency();
-          this.createUpdate=true;
-          return;
-        }
+    // else{
+    //    this.message.success='update';
+    //   this.catergoryService.update(this.currency).subscribe(response=>{
+    //      aux=<Categories>response;
+    //      if(aux.categoryId>0){
+    //       this.message.alertConfirm();
+    //       this.categories=new Categories();
+    //       this.createUpdate=true;
+    //       return;
+    //     }
 
-        else{
-          if(aux.currencyId==0){
-            this.message.error=true;
-            this.message.alertError();
-            return;
-          }else{
-            this.message.alertError();
-            return;
-          }
-        }
-      })
-    }
+    //     else{
+    //       if(aux.currencyId==0){
+    //         this.message.error=true;
+    //         this.message.alertError();
+    //         return;
+    //       }else{
+    //         this.message.alertError();
+    //         return;
+    //       }
+    //     }
+    //   });
+    // }
 
   }
 
@@ -145,8 +147,6 @@ export class ABMCategoriesComponent implements OnInit {
 }
 
 
-  }
-}
 
 
 // import { CurrencyService } from './../../services/currency.service';
