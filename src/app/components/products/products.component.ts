@@ -10,10 +10,11 @@ import { Categories } from 'src/app/models/categories';
   styleUrls: ['./products.component.css']
 })
 export class ProductsComponent implements OnInit {
+  allProducts: Products[];
   products: Products[];
   categories: Categories[];
   subcategories: Categories[];
-  on: boolean=false;
+  selected: boolean= false;
   // subcategories:
   constructor(private productService:ProductsService, private categoriesService: CategoryService) {
   }
@@ -22,19 +23,22 @@ export class ProductsComponent implements OnInit {
     this.categoriesService.get('api/Categories/father').subscribe(response=>{
       this.categories=<Categories[]>response;
     });
+    this.productService.get("api/Products").subscribe(response=>{
+      this.allProducts=<Products[]>response;
+    });
   }
    getSubcategories(id:number){
     this.categoriesService.get('api/Categories/father/'+id).subscribe(response=>{
       this.subcategories=<Categories[]>response;
     });
-    this.on=true;
   }
    getProducts(id:number){
-    this.on=false;     
     console.log(id);
+    this.selected=true;
     this.productService.get("api/Products/Categories/"+id).subscribe(response=>{
         this.products=<Products[]>response;
         console.log(response);
       });
   }
+
 }
