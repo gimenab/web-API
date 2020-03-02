@@ -10,11 +10,9 @@ import { FormComponent } from './components/form/form.component';
 import { SearchComponent } from './components/search/search.component';
 import { ProductsComponent } from './components/products/products.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
-import { CompanyComponent } from './components/company/company.component';
 import { HomeAdminComponent } from './components/home-admin/home-admin.component';
 import { ContactFormComponent } from './components/contact-form/contact-form.component';
 import { CardComponent } from './components/card/card.component';
-import { ProductComponent } from './components/product/product.component';
 
 
 import { FormsModule } from '@angular/Forms';
@@ -26,11 +24,9 @@ import { CarouselComponent } from './components/carousel/carousel.component';
 import { ABMCurrencyComponent } from './components/abmcurrency/abmcurrency.component';
 import { ABMCategoriesComponent } from './components/abmcategories/abmcategories.component';
 import { ABMCompaniesComponent } from './components/abmcompanies/abmcompanies.component';
-<<<<<<< HEAD
 import { ABMProductsComponent } from './components/abmproducts/abmproducts.component';
-=======
 import { FooterComponent } from './components/footer/footer.component';
->>>>>>> 7eaff62a2d20678b83c65dfb4687436d16f4f478
+
 
 
 
@@ -42,10 +38,9 @@ import { FooterComponent } from './components/footer/footer.component';
     SearchComponent,
     ProductsComponent,
     NotFoundComponent,
-    CompanyComponent,
     HomeAdminComponent,
     ContactFormComponent,
-    CardComponent, ProductComponent,
+    CardComponent,
     CompaniesComponent,
     NavbarComponent,
      NotImagePipe,
@@ -54,12 +49,8 @@ import { FooterComponent } from './components/footer/footer.component';
     ABMCurrencyComponent,
     ABMCategoriesComponent,
     ABMCompaniesComponent,
-<<<<<<< HEAD
     ABMProductsComponent,
-=======
-    FooterComponent,
->>>>>>> 7eaff62a2d20678b83c65dfb4687436d16f4f478
-
+    FooterComponent
 
   ],
   imports: [
