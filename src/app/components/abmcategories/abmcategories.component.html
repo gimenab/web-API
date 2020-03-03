@@ -1,6 +1,6 @@
 
 <div class="main-container">
-  <h2>Lista de Categorías</h2>
+  <h2>Categorías</h2>
   <div class="row">
   <div class="col-md-5">
     <div class="create-category">
@@ -10,7 +10,6 @@
       <table class="table">
         <thead class="thead-dark">
           <tr>
-            <th scope="col">Logo</th>
             <th scope="col">Nombre de Categoria</th>
             <th scope="col">Categoria ID</th>
             <th scope="col">Acciones</th>
@@ -18,9 +17,6 @@
         </thead>
         <tbody>
           <tr>
-            <!--ngFor paracargar categorias-->
-
-            <td>1</td>
             <td>prueba</td>
             <td>prueba</td>
             <td>
@@ -47,10 +43,10 @@
             <option *ngFor="let categories of selectCategory" [value]="category.categoryId">{{category.categoryName}}</option>
           </select>
         </div>
-        <button class="btn btn-primary" [disabled]="!f.valid">Sumit</button>
+        <button class="btn btn-primary " [disabled]="!f.valid">Sumit</button>
       </form>
     </div>
-
+    <div class="col-md-1"></div>
   </div>
 </div>
 
