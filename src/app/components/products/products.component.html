@@ -1,4 +1,58 @@
-<div  *ngFor="let category of categories" class="btn-group btn-group-toggle" data-toggle="buttons">
+<div *ngIf="showCategories">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item active" aria-current="page">Categorías</li>
+    </ol>
+  </nav>
+  <div  class="card-columns">
+    <div class="card" *ngFor="let category of categories" (click)="getSubcategories(category.categoryId, category.categoryName)">
+      <img [src]="category.categoryLogo | notImage" class="card-img-top">
+      <div   class="card-body">
+        <h5  class="card-title" >{{category.categoryName}}</h5>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="showSubcategories">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a role="button" (click)="onClickBreadCrumb1()"><u>{{categoryName}}</u></a></li>
+      <li class="breadcrumb-item active" aria-current="page">Subcategorías</li>
+    </ol>
+  </nav>
+  <div  class="card-columns">
+    <div class="card"*ngFor="let sb of subcategories">
+      <img [src]="sb.categoryLogo | notImage" class="card-img-top" (click)="getProducts(sb.categoryId, sb.categoryName)">
+      <div  class="card-body">
+        <h5  class="card-title" >{{sb.categoryName}}</h5>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="showProducts">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a role="button" (click)="onClickBreadCrumb1()"><u>{{categoryName}}</u></a></li>
+      <li class="breadcrumb-item"><a role="button" (click)="onClickBreadCrumb2()"><u>{{subcategoryName}}</u></a></li>
+      <li class="breadcrumb-item active" aria-current="page">Productos</li>
+    </ol>
+  </nav>
+  <div  class="card-columns">
+    <div class="card"*ngFor="let product of products">
+      <img [src]="product.productLogo | notImage" class="card-img-top">
+      <div  class="card-body">
+        <h5  class="card-title" >{{product.productName}}</h5>
+        <p class="card-text" >{{product.productDescription}}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- <div  *ngFor="let category of categories" class="btn-group btn-group-toggle" data-toggle="buttons">
     <label class="btn btn-secondary active" >
       <input  type="radio" name="options" [id]="category.categoryId"  (click)="getSubcategories(category.categoryId)" checked> {{category.categoryName}}
     </label>
@@ -45,4 +99,4 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->

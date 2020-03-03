@@ -13,7 +13,7 @@ export class DataService {
     return this.http.get(this.url);
   }
   get(url:string){
-    return this.http.get('http://localhost:44331/' +url);
+    return this.http.get('https://localhost:44331/' +url);
   }
    getId(id:number){
     return this.http.get('https://localhost:44331/'+this.url+id)

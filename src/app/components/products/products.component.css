@@ -1,1 +1,8 @@
-
+img {
+  border-radius: 50% !important;
+  height: 100px;
+  width: 165px;
+}
+u {
+  text-decoration: underline;
+}

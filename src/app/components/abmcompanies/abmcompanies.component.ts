@@ -114,9 +114,8 @@ export class ABMCompaniesComponent implements OnInit {
     else{
       this.message.success='update';
       this.companyService.update(this.company).subscribe(response=>{
-        aux=<Companies>response;
 
-        if(aux.companyId>0){
+        if(response=="ok"){
           this.message.alertConfirm();
           this.company=new Companies();
           this.createUpdate=true;
@@ -124,7 +123,7 @@ export class ABMCompaniesComponent implements OnInit {
         }
 
         else{
-          if(aux.companyId==0){
+          if(response=="exists"){
             this.message.error=true;
             this.message.alertError();
             return;
