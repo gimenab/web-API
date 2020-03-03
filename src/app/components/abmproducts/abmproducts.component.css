@@ -6,6 +6,7 @@ button{
   float: right;
   right: 0px;
   margin: 10px;
+  margin-right: 0px;
 }
 
 
@@ -26,3 +27,7 @@ button{
   color: green;
 }
 
+label{
+  margin-bottom: 0px;
+  font-size: 14px;
+}

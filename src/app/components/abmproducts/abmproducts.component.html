@@ -1,7 +1,8 @@
 <div class="main-container">
+  <h3>Productos</h3>
   <div class="row">
 
-    <div class="col-md-6">
+    <div class="col-md-5">
       <label for="companyId">Compañia:</label>
           <select  class="form-control" *ngFor="let company of CompaniesSelected">
             <option (click)="getProducts(company.companyId)">{{company.companyName}}</option>
@@ -11,7 +12,6 @@
       <table class="table">
         <thead class="thead-dark">
           <tr>
-            <th scope="col">Logo</th>
             <th scope="col">Nombre</th>
             <th scope="col">Precio</th>
             <th scope="col"></th>
@@ -19,7 +19,6 @@
         </thead>
         <tbody>
           <tr  *ngFor="let prodcutTable of products">
-            <td>{{prodcutTable.productLogo}}</td>
             <td>{{prodcutTable.productName}}</td>
             <td>{{getcode(prodcutTable.currencyId)}} {{prodcutTable.productPrice}}</td>
             <td>
@@ -31,7 +30,8 @@
       </table>
 
     </div>
-    <div class="col-md-6">
+    <div class="col-md-1"></div>
+    <div class="col-md-5">
       <form #f="ngForm" (ngSubmit)="submit(f)">
 
         <label for="productName">Nombre:</label>
@@ -60,8 +60,6 @@
             <option [value]="company.companyId">{{company.companyName}}</option>
           </select>
 
-
-          <div class="row">
             <label for="currencyId">Tipo de moneda:</label>
             <select id="selectCurrency"  [disabled]="createUpdate"  [(ngModel)]="product.currencyId"  #currency  name="currency" class="form-control" *ngFor="let currency of currencies">
               <option [value]="currency.currencyId">{{currency.currencyDescription}}</option>
@@ -69,7 +67,7 @@
 
             <label for="productPrice">Precio:</label>
             <input [disabled]="createUpdate" #price="ngModel"  name="price" type="text" [(ngModel)]="product.productPrice" class="form-control">
-          </div>
+
 
 
           <div class="row">
@@ -85,6 +83,7 @@
         <button class="btn btn-primary" [disabled]="!f.valid">Sumit</button>
       </form>
     </div>
+    <div class="col-md-1"></div>
   </div>
 </div>
 
