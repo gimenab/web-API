@@ -11,9 +11,11 @@ export class Card2Component implements OnInit {
 
   @Input() company:Companies;
 
+  date:Date;
   constructor() { }
 
   ngOnInit(): void {
+    this.date= new Date(this.company.companyFoundationDate);
   }
 
 }

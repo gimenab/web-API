@@ -33,8 +33,12 @@ export class ABMProductsComponent implements OnInit {
               private companyService:CompanyService, private currencyService:CurrencyService) { }
 
   ngOnInit(): void {
+    this.productsService.getAll().subscribe(resposne=>{
+      console.log(<Products[]>resposne);
+    })
     this.companyService.getAll().subscribe(response=>{
       this.companies=<Companies[]>response;
+
     })
   }
 

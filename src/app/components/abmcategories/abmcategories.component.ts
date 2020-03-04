@@ -29,7 +29,7 @@ export class ABMCategoriesComponent implements OnInit {
     this.categoryService.getAll().subscribe( response => {
       this.categories =  response as Categories[];
     });
-    this.categoryService.get('/api/Categories/father').subscribe( response => {
+    this.categoryService.get('/Categories/father').subscribe( response => {
       this.categoryFather =  response as Categories[];
     });
   }
@@ -76,7 +76,7 @@ export class ABMCategoriesComponent implements OnInit {
   update(id: number) {
         let aux: Categories;
         this.message.success = 'update';
-        this.categoryService.get( 'api/Categories/' + id ).subscribe (response => {
+        this.categoryService.get( '/Categories/' + id ).subscribe (response => {
           aux =  response as Categories;
           if ( aux.categoryId == -1) {
             this.message.alertError();

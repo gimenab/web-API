@@ -68,14 +68,14 @@ export class ABMCurrencyComponent implements OnInit {
   Update(id:number){
     let aux:Currency;
     this.message.success="update";
-    this.currencyService.get('api/Currencies/'+id).subscribe(response=>{
+    this.currencyService.get('/Currencies/'+id).subscribe(response=>{
       aux=<Currency>response;
       if(aux.currencyId==-1){
         this.message.alertError();
         return;
       }
       this.currency=aux;
-      this.createUpdate=true;
+      this.createUpdate=false;
     })
   }
 
