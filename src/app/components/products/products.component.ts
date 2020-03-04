@@ -1,3 +1,7 @@
+import { Currency } from './../../models/Currency';
+import { CurrencyService } from './../../services/currency.service';
+import { Companies } from 'src/app/models/companies';
+import { CompanyService } from './../../services/company.service';
 import { CategoryService } from './../../services/category.service';
 import { ProductsService } from './../../services/products.service';
 import { Component, OnInit } from '@angular/core';
@@ -19,10 +23,11 @@ export class ProductsComponent implements OnInit {
   showSubcategories: boolean= false;
   showProducts: boolean= false;
   showProduct: boolean= false;
-  product : Products;
-
+  product : Products=new Products();
+  company: Companies= new Companies();
+  currency: Currency= new Currency();
   // subcategories:
-  constructor(private productService:ProductsService, private categoriesService: CategoryService) {
+  constructor(private productService:ProductsService, private categoriesService: CategoryService, private companyService: CompanyService, private currencyService: CurrencyService) {
   }
 
   ngOnInit(): void {
@@ -52,13 +57,22 @@ export class ProductsComponent implements OnInit {
     this.showProducts=true;
     this.showProduct= false;
   }
+  // obtener producto
   getProduct(producto : Products){
+    this.companyService.getId(producto.companyId).subscribe(response=>{
+      this.company=<Companies>response;
+      console.log(response);
+    });
+    this.currencyService.getId(producto.currencyId).subscribe(response=>{
+      this.currency=<Currency>response;
+    });
     this.product= producto;
     this.showCategories=false;
     this.showSubcategories=false;
     this.showProducts=false;
     this.showProduct= true;
   }
+  //aca termina
   onClickBreadCrumb1(){
     this.showCategories=true;
     this.showSubcategories=false;

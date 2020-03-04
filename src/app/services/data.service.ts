@@ -16,7 +16,7 @@ export class DataService {
     return this.http.get('https://localhost:44331/' +url);
   }
    getId(id:number){
-    return this.http.get('https://localhost:44331/'+this.url+id)
+    return this.http.get(this.url+"/"+id)
   }
   create(resource){
     return  this.http.post(this.url, JSON.stringify(resource));
