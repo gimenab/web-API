@@ -10,18 +10,18 @@
       <table class="table">
         <thead class="thead-dark">
           <tr>
-            <th scope="col">Nombre de Categoria</th>
-            <th scope="col">Categoria ID</th>
-            <th scope="col">Acciones</th>
+            <th scope="col">Categoria</th>
+            <th scope="col">Categoria Superior</th>
+            <th scope="col"></th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>prueba</td>
-            <td>prueba</td>
+            <td>{{category.categoryName}}</td>
+            <td>{{category.categoryId}}</td>
             <td>
-              <button type="button" class="btn btn-primary"  (click)="update()"><i class="fas fa-edit"></i></button>
-              <button type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+              <button type="button" class="btn btn-primary"  (click)="update(category.categoryId)"><i class="fas fa-edit"></i></button>
+              <button type="button" class="btn btn-danger" (click)="delete(category.categoryId)"><i class="fas fa-trash-alt"></i></button>
             </td>
           </tr>
         </tbody>

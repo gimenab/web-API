@@ -113,14 +113,13 @@ export class ABMCategoriesComponent implements OnInit {
     } else {
     this.message.success = 'update';
     this.categoryService.update( this.category).subscribe ( response => {
-    aux =  response as Categories;
-    if (aux.categoryId > 0) {
+    if (response=="ok") {
     this.message.alertConfirm();
     this.category = new Categories();
     this.createUpdate = true;
     return;
     } else {
-    if (aux.categoryId == 0) {
+    if (response == "exists") {
     this.message.error = true;
     this.message.alertError();
     return;
