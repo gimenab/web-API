@@ -3659,3 +3659,10 @@ h1{
     animation-iteration-count: 1 !important;
   }
 }
+
+.pages{
+  min-height: 100vh;
+}
+td{
+  padding:0 !important;
+}

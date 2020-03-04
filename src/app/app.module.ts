@@ -28,6 +28,7 @@ import { ABMCategoriesComponent } from './components/abmcategories/abmcategories
 import { ABMCompaniesComponent } from './components/abmcompanies/abmcompanies.component';
 import { ABMProductsComponent } from './components/abmproducts/abmproducts.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { Card3Component } from './components/card3/card3.component';
 
 
 
@@ -52,7 +53,8 @@ import { FooterComponent } from './components/footer/footer.component';
     ABMCompaniesComponent,
     ABMProductsComponent,
     FooterComponent,
-    ProductsComponent
+    ProductsComponent,
+    Card3Component
   ],
   imports: [
     BrowserModule,
