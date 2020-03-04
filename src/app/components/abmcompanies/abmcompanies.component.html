@@ -3,6 +3,7 @@
   <div class="row">
 
     <div class="col-md-5">
+      <input type="text" [(ngModel)]="search" name="search" placeholder="Empresa" (keyup.enter)="searchCompanies()">
       <button type="button" class="btn  btn-sm btn-success" (click)="create()"><i class="fas fa-plus-circle"></i></button>
 
       <table class="table">
@@ -35,45 +36,45 @@
       <form #f="ngForm" (ngSubmit)="submit(f)">
 
         <label for="companyName">Nombre de la compañía:</label>
-        <input [disabled]="createUpdate" #name="ngModel"  name="name" type="text" [(ngModel)]="company.companyName" class="form-control">
+        <input [disabled]="createUpdate" #name="ngModel"  name="name" type="text"  placeholder="Nombre de la Compañia" [(ngModel)]="company.companyName" class="form-control">
 
         <div class="row">
           <div class="col-6">
             <label for="companyFoundationDate">Fecha de fundación:</label>
-            <input [disabled]="createUpdate" #FoundationDate="ngModel"  name="FoundationDate" type="date" [(ngModel)]="company.companyFoundationDate" class="form-control">
+            <input [disabled]="createUpdate" #FoundationDate="ngModel"  name="FoundationDate" type="date"  [(ngModel)]="company.companyFoundationDate" class="form-control">
 
           </div>
           <div class="col-6">
             <label for="companyPhone">Teléfono:</label>
-            <input [disabled]="createUpdate" #companyPhone="ngModel"  name="companyPhone" type="text" [(ngModel)]="company.companyPhone" class="form-control">
+            <input [disabled]="createUpdate" #companyPhone="ngModel"  name="companyPhone" type="text"  placeholder="555-555-5555"[(ngModel)]="company.companyPhone" class="form-control">
           </div>
         </div>
         <div class="row">
         <div class="col-6">
           <label for="companyAddress">Domicilio:</label>
-          <input [disabled]="createUpdate" #companyAddress="ngModel"  name="companyAddress" type="text" [(ngModel)]="company.companyAddress" class="form-control">
+          <input [disabled]="createUpdate" #companyAddress="ngModel"  name="companyAddress" type="text"  placeholder="Calle 1 N° 100" [(ngModel)]="company.companyAddress" class="form-control">
         </div>
         <div class="col-6">
           <label for="companyCity">Ciudad:</label>
-          <input [disabled]="createUpdate" #companyCity="ngModel"  name="companyCity" type="text" [(ngModel)]="company.companyCity" class="form-control">
+          <input [disabled]="createUpdate" #companyCity="ngModel"  name="companyCity" type="text"  placeholder="Ciudad" [(ngModel)]="company.companyCity" class="form-control">
         </div>
         </div>
         <div class="row">
         <div class="col-6">
         <label for="companyWebSite">Sitio web:</label>
-        <input [disabled]="createUpdate" #companyWebSite="ngModel"  name="companyWebSite" type="text" [(ngModel)]="company.companyWebSite" class="form-control">
+        <input [disabled]="createUpdate" #companyWebSite="ngModel"  name="companyWebSite" type="text"  placeholder="misitio.com" [(ngModel)]="company.companyWebSite" class="form-control">
         </div>
         <div class="col-6">
         <label for="companyEmail">Email:</label>
-        <input [disabled]="createUpdate" #companyEmail="ngModel"  name="companyEmail" type="text" [(ngModel)]="company.companyEmail" class="form-control">
+        <input [disabled]="createUpdate" #companyEmail="ngModel"  name="companyEmail" type="text"  placeholder="miemail@gmail.com" [(ngModel)]="company.companyEmail" class="form-control">
       </div>
       </div>
 
         <label for="companyLogo">Logo:</label>
-        <input [disabled]="createUpdate" #companyLogo="ngModel"  name="companyLogo" type="text" [(ngModel)]="company.companyLogo" class="form-control">
+        <input [disabled]="createUpdate" #companyLogo="ngModel"  name="companyLogo" type="text"  placeholder="url"[(ngModel)]="company.companyLogo" class="form-control">
 
         <label for="companyDescription">Descripción:</label>
-        <input [disabled]="createUpdate" #description="ngModel"  name="description" type="text" [(ngModel)]="company.companyDescription" class="form-control">
+        <input [disabled]="createUpdate" #description="ngModel"  name="description" type="text"  placeholder="Mi Compañia ..." [(ngModel)]="company.companyDescription" class="form-control">
           <br>
         <button class="btn btn-primary" [disabled]="!f.valid">Submit</button>
       </form>

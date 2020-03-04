@@ -35,7 +35,7 @@
       <form #f="ngForm" (ngSubmit)="submit(f)">
 
         <label for="productName">Nombre:</label>
-        <input [disabled]="createUpdate" #name="ngModel" type="text" name="name" [(ngModel)]="product.productName" class="form-control" required minlength="3">
+        <input [disabled]="createUpdate" #name="ngModel" type="text" name="name"  placeholder="Nombre de producto"[(ngModel)]="product.productName" class="form-control" required minlength="3">
 
           <div *ngIf="!name.valid && name.touched" class="alert alert-danger">
             <div *ngIf="name.errors.required" >El nombre es requerido</div>
@@ -46,13 +46,13 @@
 
 
           <label for="productDescription">Descripcion:</label>
-          <input [disabled]="createUpdate" #description="ngModel"  name="description" type="text" [(ngModel)]="product.productDescription" class="form-control">
+          <input [disabled]="createUpdate" #description="ngModel"  name="description" type="text"  placeholder="Mi producto ..." [(ngModel)]="product.productDescription" class="form-control">
 
           <label for="productLogo">Logo del producto:</label>
-          <input [disabled]="createUpdate" #logo="ngModel"  name="logo" type="text" [(ngModel)]="product.productLogo" class="form-control">
+          <input [disabled]="createUpdate" #logo="ngModel"  name="logo" type="text"  placeholder="url" [(ngModel)]="product.productLogo" class="form-control">
 
           <label for="productWebSite">sitio web de referencia:</label>
-          <input [disabled]="createUpdate" #webSite="ngModel"  name="webSite" type="text" [(ngModel)]="product.productWebSite" class="form-control">
+          <input [disabled]="createUpdate" #webSite="ngModel"  name="webSite" type="text"  placeholder="misitio.com"[(ngModel)]="product.productWebSite" class="form-control">
 
 
           <label for="companyId">Compañia:</label>
@@ -66,7 +66,7 @@
             </select>
 
             <label for="productPrice">Precio:</label>
-            <input [disabled]="createUpdate" #price="ngModel"  name="price" type="text" [(ngModel)]="product.productPrice" class="form-control">
+            <input [disabled]="createUpdate" #price="ngModel"  name="price" type="text"  placeholder="00.00"[(ngModel)]="product.productPrice" class="form-control">
 
 
 

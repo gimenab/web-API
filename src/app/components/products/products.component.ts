@@ -50,7 +50,7 @@ export class ProductsComponent implements OnInit {
    getProducts(id:number, sName: any){
     this.productService.get("/Products/Categories/"+id).subscribe(response=>{
         this.products=<Products[]>response;
-        console.log(response);
+        console.log( this.products);
       });
     this.subcategoryName= sName;
     this.showSubcategories=false;

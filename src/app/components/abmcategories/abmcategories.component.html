@@ -4,6 +4,7 @@
   <div class="row">
   <div class="col-md-5">
     <div class="create-category">
+      <input type="text" [(ngModel)]="search" name="search" placeholder="EUR" (keyup.enter)="searchCategorie()">
       <button type="button" class="btn btn-sm btn-success "(click)="create()">
       <i class="fas fa-plus-circle "></i></button>
     </div>
@@ -32,7 +33,7 @@
       <form #f="ngForm" (ngSubmit)="submit(f)" >
         <div class="form-group">
           <label for="categoryName">Nombre de Subcategoria</label>
-          <input required name="nameCategory" [(ngModel)]="category.categoryName" #nameCategory ="ngModel" id="nameCategoty" type="text" class="form-control" >
+          <input required name="nameCategory" [(ngModel)]="category.categoryName" #nameCategory ="ngModel"  placeholder="Categoría" id="nameCategoty" type="text" class="form-control" >
            <div *ngIf="!nameCategory.valid && nameCategory.touched" class ="alert alert-danger">
              <div *ngIf ="nameCategory.errors.required">Nombre de Categoria es requerido</div>
            </div>
