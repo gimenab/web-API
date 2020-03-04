@@ -28,24 +28,24 @@ export class ProductsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.categoriesService.get('api/Categories/father').subscribe(response=>{
+    this.categoriesService.get('/Categories/father').subscribe(response=>{
       this.categories=<Categories[]>response;
       console.log("entro");
     });
-    this.productService.get("api/Products").subscribe(response=>{
+    this.productService.get("/Products").subscribe(response=>{
       // this.allProducts=<Products[]>response;
     });
   }
    getSubcategories(id:number, cName: any){
     this.categoryName= cName;
-    this.categoriesService.get('api/Categories/father/'+id).subscribe(response=>{
+    this.categoriesService.get('/Categories/father/'+id).subscribe(response=>{
       this.subcategories=<Categories[]>response;
     });
     this.showCategories=false;
     this.showSubcategories=true;
   }
    getProducts(id:number, sName: any){
-    this.productService.get("api/Products/Categories/"+id).subscribe(response=>{
+    this.productService.get("/Products/Categories/"+id).subscribe(response=>{
         this.products=<Products[]>response;
         console.log(response);
       });
@@ -57,7 +57,7 @@ export class ProductsComponent implements OnInit {
   getProduct(id : any){
     console.log("ha entraoo")
     console.log(id);
-    this.productService.get("api/Products/Categories/"+id).subscribe(response=>{
+    this.productService.get("/Products/Categories/"+id).subscribe(response=>{
       this.product= <Products>response;
       console.log(this.product.productName);
     });

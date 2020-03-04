@@ -113,7 +113,7 @@ export class ABMCurrencyComponent implements OnInit {
       this.currencyService.update(this.currency).subscribe(response=>{
         aux=<Currency>response;
 
-        if(aux.currencyId>0){
+        if(response=="ok"){
           this.message.alertConfirm();
           this.currency=new Currency();
           this.createUpdate=true;
@@ -121,7 +121,7 @@ export class ABMCurrencyComponent implements OnInit {
         }
 
         else{
-          if(aux.currencyId==0){
+          if(response=="exists"){
             this.message.error=true;
             this.message.alertError();
             return;
