@@ -17,7 +17,7 @@ export class ABMCategoriesComponent implements OnInit {
   categoryFather: Categories[];
   selectCategory = [{string : 'categoryName'}];
   message: Message = new Message(Swal);
-  createUpdate: boolean;
+  createUpdate:boolean =true;
   search:string;
 
 
@@ -84,7 +84,7 @@ export class ABMCategoriesComponent implements OnInit {
             return;
           }
           this.category = aux;
-          this.createUpdate = true;
+          this.createUpdate = false;
          });
 
       }
@@ -139,7 +139,7 @@ export class ABMCategoriesComponent implements OnInit {
         this.categories=<Categories[]>response;
       })
     }else{
-      this.categoryService.get("/Categories/search?orderBy='CurrencyCode'&value="+this.search).subscribe(response=>{
+      this.categoryService.get("/Categories/search?orderBy='CategoryName'&value="+this.search).subscribe(response=>{
         this.categories=<Categories[]>response;
         console.log(this.categories);
       });
