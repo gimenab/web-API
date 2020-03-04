@@ -17,6 +17,7 @@ export class ABMCompaniesComponent implements OnInit {
   companies:Companies[];
   createUpdate:boolean=true;
   message:Message=new Message(Swal);
+  search:string;
 
   constructor(private companyService:CompanyService) { }
 
@@ -135,6 +136,18 @@ export class ABMCompaniesComponent implements OnInit {
       })
     }
 
+  }
+  searchCompanies(){
+    if(!this.search){
+      this.companyService.getAll().subscribe(response=>{
+        this.companies=<Companies[]>response;
+      })
+    }else{
+      this.companyService.get("/Companies/search?orderBy='CurrencyCode'&value="+this.search).subscribe(response=>{
+        this.companies=<Companies[]>response;
+        console.log(this.companies);
+      });
+    }
   }
 
 

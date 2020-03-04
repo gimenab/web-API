@@ -52,7 +52,7 @@
     </ol>
   </nav>
   <div *ngIf="product" class="media">
-    <img [src]="product.productLogo | notImage" class="mr-3" >
+    <img class="img-card-product" [src]="product.productLogo | notImage" >
     <div class="media-body">
       <h5 class="mt-0">{{product.productName}}</h5>
       <p>Descripcion: {{product.productDescription}}</p>
