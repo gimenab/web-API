@@ -11,7 +11,9 @@ export class CurrencyService extends DataService {
 
   constructor(http:HttpClient) {
 
+
     super(http, '/Currencies');
+
 
   }
 }
