@@ -16,8 +16,8 @@
 
     </ul>
   </div>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-success my-2 my-sm-0">Search</button>
+    <form *ngIf="client" class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2"(keyup.enter)="search()" name="product" [(ngModel)]="product" type="text" placeholder="Producto" aria-label="Search">
+      <button class="btn btn-success my-2 my-sm-0" type="button" (click)="search()">Buscar</button>
     </form>
 </nav>

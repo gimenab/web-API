@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CarouselComponent implements OnInit {
 
-  products:Products[];
+  products:Products[]=[];
 
   constructor(private productsService: ProductsService) { }
 

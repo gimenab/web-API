@@ -7,14 +7,19 @@ import { Router } from '@angular/router';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+
   pages:{page:string,name:string}[];
   userSelected:{selected:string,notSelected:string};
+  client:boolean;
+  product:string;
 
   constructor( private router:Router) { }
 
   ngOnInit(): void {
     this.pages=[{page:'',name:'Inicio'},{page:'products',name:'Productos'},{page:'companies',name:'Empresas'}];
     this.userSelected={selected:'Cliente',notSelected:'Administrador'};
+    this.client=true;
+    this.router.navigate(['']);
 
   }
 
@@ -22,7 +27,7 @@ export class NavbarComponent implements OnInit {
     if(this.userSelected.selected=='Administrador'){
       this.pages=[{page:'',name:'Inicio'},{page:'products',name:'Productos'},{page:'companies',name:'Empresas'}];
       this.userSelected={selected:'Cliente',notSelected:'administrador'};
-      console.log(this.pages,this.userSelected)
+      this.client=true;
       this.router.navigate(['']);
       return;
     }
@@ -32,10 +37,21 @@ export class NavbarComponent implements OnInit {
       {page:'abmCompanies',name:'Empresas'},{page:'abmCategories',name:'Categorias'},
       {page:'abmCurrencies',name:'Monedas'}];
       this.userSelected={selected:'Administrador', notSelected:'Cliente'};
-      console.log(this.pages,this.userSelected);
+      this.client=false;
       this.router.navigate(['admin']);
       return;
     }
   }
 
+
+  search(){
+    if(!this.product){
+      return;
+    }
+    let search:string=this.product;
+    this.product='';
+    this.router.navigate(['search',search]);
+
+
+  }
 }

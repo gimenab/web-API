@@ -1,5 +1,42 @@
-img {
-  border-radius: 50% !important;
-  height: 200px;
-  width: 330px;
-}
+.card-container{
+  display :flex;
+  width: 100%;
+  justify-content: space-around;
+  margin: auto;
+  flex-wrap: wrap;
+  }
+
+  .img-card {
+    width: 250px;
+    height: 250px;
+    padding-top:25px;
+    object-fit: cover;
+    filter: brightness(70%);
+    cursor:pointer;
+    animation:escalar 1.5s;
+  }
+  @keyframes escalar{
+    to{
+      transform:scale(1);
+    }
+    from{
+      transform: scale(1.05);
+    }
+  }
+  .img-card:hover{
+    filter:brightness(105%);
+  }
+  .card-text{
+    font-size:12px;
+    font-family: 'Barlow', sans-serif;
+    color:#333;
+
+  }
+  .card{
+    background-color: #e9ecef85;
+  }
+  .card-title{
+    font-weight: bold;
+    font-family: 'Quicksand', sans-serif;
+    text-align: center;
+  }
