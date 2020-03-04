@@ -26,7 +26,6 @@ import { ABMCategoriesComponent } from './components/abmcategories/abmcategories
 import { ABMCompaniesComponent } from './components/abmcompanies/abmcompanies.component';
 import { ABMProductsComponent } from './components/abmproducts/abmproducts.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { Products2Component } from './components/products2/products2.component';
 
 
 
@@ -52,8 +51,7 @@ import { Products2Component } from './components/products2/products2.component';
     ABMCompaniesComponent,
     ABMProductsComponent,
     FooterComponent,
-    Products2Component
-
+    ProductsComponent
   ],
   imports: [
     BrowserModule,

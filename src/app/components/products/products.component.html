@@ -41,11 +41,29 @@
   </nav>
   <div  class="card-columns">
     <div class="card"*ngFor="let product of products">
-      <img [src]="product.productLogo | notImage" class="card-img-top">
+      <img [src]="product.productLogo | notImage" class="card-img-top" (click)="getProduct(product.ProductCategories[2])">
       <div  class="card-body">
         <h5  class="card-title" >{{product.productName}}</h5>
         <p class="card-text" >{{product.productDescription}}</p>
       </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="showProduct">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a role="button" (click)="onClickBreadCrumb1()"><u>{{categoryName}}</u></a></li>
+      <li class="breadcrumb-item"><a role="button" (click)="onClickBreadCrumb2()"><u>{{subcategoryName}}</u></a></li>
+      <li class="breadcrumb-item"><a role="button" (click)="onClickBreadCrumb3()"><u>Productos</u></a></li>
+      <li class="breadcrumb-item active" aria-current="page"></li>
+    </ol>
+  </nav>
+  <div class="media">
+    <img [src]="" class="mr-3" >
+    <div class="media-body">
+      <h5 class="mt-0">nombre</h5>
+      descrip
     </div>
   </div>
 </div>
