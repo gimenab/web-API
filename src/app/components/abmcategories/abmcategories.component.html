@@ -1,1 +1,52 @@
-<p>abmcategories works!</p>
+
+<div class="main-container">
+  <h2>Categorías</h2>
+  <div class="row">
+  <div class="col-md-5">
+    <div class="create-category">
+      <button type="button" class="btn btn-success "(click)="create()">
+      <i class="fas fa-plus-circle "></i></button>
+    </div>
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Categoria</th>
+            <th scope="col">Categoria Superior</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{category.categoryName}}</td>
+            <td>{{category.categoryId}}</td>
+            <td>
+              <button type="button" class="btn btn-primary"  (click)="update(category.categoryId)"><i class="fas fa-edit"></i></button>
+              <button type="button" class="btn btn-danger" (click)="delete(category.categoryId)"><i class="fas fa-trash-alt"></i></button>
+            </td>
+          </tr>
+        </tbody>
+     </table>
+    </div>
+    <div class="col-md-1"></div>
+    <div class="col-md-5">
+      <form #f="ngForm" (ngSubmit)="submit(f)" >
+        <div class="form-group">
+          <label for="categoryName">Nombre de Subcategoria</label>
+          <input required name="nameCategory" [(ngModel)]="category.categoryName" #nameCategory ="ngModel" id="nameCategoty" type="text" class="form-control" >
+           <div *ngIf="!nameCategory.valid && nameCategory.touched" class ="alert alert-danger">
+             <div *ngIf ="nameCategory.errors.required">Nombre de Categoria es requerido</div>
+           </div>
+        </div>
+        <div class="form-group">
+          <label for="selectCategory">Seleccionar Categoria Superior</label>
+          <select ngModel name="father" #father="ngModel" id ="selectCategoryFather" class="form-control">
+            <option *ngFor="let categories of selectCategory" [value]="category.categoryId">{{category.categoryName}}</option>
+          </select>
+        </div>
+        <button class="btn btn-primary " [disabled]="!f.valid">Sumit</button>
+      </form>
+    </div>
+    <div class="col-md-1"></div>
+  </div>
+</div>
+
