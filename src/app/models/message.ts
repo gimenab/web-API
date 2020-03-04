@@ -1,4 +1,5 @@
 
+
 export  class  Message {
   private Swal;
   public success:'delete'|'update'|'create';
