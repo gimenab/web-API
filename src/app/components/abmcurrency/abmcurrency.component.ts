@@ -2,8 +2,8 @@ import { CurrencyService } from './../../services/currency.service';
 import { Currency } from './../../models/Currency';
 import { Component, OnInit } from '@angular/core';
 import { Message } from './../../models/Message';
-import Swal from 'sweetalert2'
-import 'sweetalert2/src/sweetalert2.scss'
+import Swal from 'sweetalert2';
+import 'sweetalert2/src/sweetalert2.scss';
 
 @Component({
   selector: 'app-abmcurrency',
@@ -113,7 +113,8 @@ export class ABMCurrencyComponent implements OnInit {
       this.currencyService.update(this.currency).subscribe(response=>{
         aux=<Currency>response;
 
-        if(aux.currencyId>0){
+        if(response=="ok"){
+
           this.message.alertConfirm();
           this.currency=new Currency();
           this.createUpdate=true;
@@ -121,7 +122,9 @@ export class ABMCurrencyComponent implements OnInit {
         }
 
         else{
-          if(aux.currencyId==0){
+
+          if(response=="exists"){
+
             this.message.error=true;
             this.message.alertError();
             return;

@@ -46,7 +46,7 @@ export class ABMProductsComponent implements OnInit {
   }
 
   getProducts(id:number){
-    this.productsService.get('api/Products/Companies/'+id).subscribe(resposne=>{
+    this.productsService.get('/Products/Companies/'+id).subscribe(resposne=>{
       this.products=<Products[]>resposne;
     })
   }
@@ -108,7 +108,7 @@ export class ABMProductsComponent implements OnInit {
   Update(id:number){
     let aux:Products;
     this.message.success="update";
-    this.productsService.get('api/Products/'+id).subscribe(response=>{
+    this.productsService.get('/Products/'+id).subscribe(response=>{
       aux=<Products>response;
       if(aux.productid==-1){
         this.message.alertError();
@@ -153,7 +153,7 @@ export class ABMProductsComponent implements OnInit {
       this.productsService.update(this.product).subscribe(response=>{
         aux=<Products>response;
 
-        if(aux.productid>0){
+        if(response=='ok'){
           this.message.alertConfirm();
           this.product=new Products();
           this.createUpdate=true;
@@ -161,7 +161,7 @@ export class ABMProductsComponent implements OnInit {
         }
 
         else{
-          if(aux.productid==0){
+          if(response=='exists'){
             this.message.error=true;
             this.message.alertError();
             return;

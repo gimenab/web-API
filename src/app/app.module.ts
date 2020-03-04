@@ -1,3 +1,6 @@
+import { CategoryService } from './services/category.service';
+import { CurrencyService } from './services/currency.service';
+import { CompanyService } from './services/company.service';
 import { CompaniesComponent } from './components/companies/companies.component';
 import { ProductsService } from './services/products.service';
 import { BrowserModule } from '@angular/platform-browser';
@@ -6,7 +9,6 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
-import { FormComponent } from './components/form/form.component';
 import { SearchComponent } from './components/search/search.component';
 import { ProductsComponent } from './components/products/products.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
@@ -34,7 +36,6 @@ import { FooterComponent } from './components/footer/footer.component';
   declarations: [
     AppComponent,
     HomeComponent,
-    FormComponent,
     SearchComponent,
     ProductsComponent,
     NotFoundComponent,
@@ -60,7 +61,10 @@ import { FooterComponent } from './components/footer/footer.component';
     HttpClientModule
   ],
   providers: [
-    ProductsService
+    ProductsService,
+    CompanyService,
+    CurrencyService,
+    CategoryService,
   ],
   bootstrap: [AppComponent]
 })

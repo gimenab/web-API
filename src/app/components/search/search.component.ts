@@ -23,7 +23,7 @@ export class SearchComponent implements OnInit {
   }
 
   search(){
-    this.productsService.get('api/Products/search?orderBy=ProductName&value='+ this.productSearch)
+    this.productsService.get('/Products/search?orderBy=ProductName&value='+ this.productSearch)
         .subscribe(response=>{
           this.products=<Products[]>response;
         })
