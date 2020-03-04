@@ -1,5 +1,12 @@
-<img [src]="company.companyLogo | notImage" class="card-img-top" alt="...">
-<div   class="card-body">
-  <h5  class="card-title" >{{company.companyName}}</h5>
-  <p class="card-text" >{{company.companyDescription}}</p>
+<div class= "card2">
+  <div class="card-container"><img class="img-card" [src]="company.companyLogo | notImage"  alt="..."></div>
+    <div   class="card-body">
+      <h5  class="card-title" >{{company.companyName}}</h5>
+      <p class="card-text" >{{company.companyFoundationDate}}</p>
+      <p class="card-text" >{{company.companyDescription}}</p>
+      <p class="card-text" >{{company.companyAddress}}</p>
+      <p class="card-text" >{{company.companyCity}}</p>
+      <p class="card-text" >{{company.companyWebSite}}</p>
+      <p class="card-text" >{{company.companyPhone}}</p>
+    </div>
 </div>
