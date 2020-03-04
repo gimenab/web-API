@@ -10,4 +10,7 @@ export class Companies {
 		public  companyPhone:string;
 		public  companyLogo:string;
 
+    constructor(){
+      this.companyId=0;
+    }
 }

@@ -29,6 +29,7 @@ import { ABMCompaniesComponent } from './components/abmcompanies/abmcompanies.co
 import { ABMProductsComponent } from './components/abmproducts/abmproducts.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { Card3Component } from './components/card3/card3.component';
+import { PhoneDirective } from './directives/phone.directive';
 
 
 
@@ -54,7 +55,8 @@ import { Card3Component } from './components/card3/card3.component';
     ABMProductsComponent,
     FooterComponent,
     ProductsComponent,
-    Card3Component
+    Card3Component,
+    PhoneDirective
   ],
   imports: [
     BrowserModule,

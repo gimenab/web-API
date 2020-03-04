@@ -40,18 +40,19 @@
         <div class="row">
           <div class="col-6">
             <label for="companyFoundationDate">Fecha de fundación:</label>
-            <input [disabled]="createUpdate" #FoundationDate="ngModel"  name="FoundationDate" type="date" [(ngModel)]="company.companyFoundationDate" class="form-control">
+            <input  [disabled]="createUpdate" #FoundationDate="ngModel"  name="FoundationDate" type="date" [(ngModel)]="company.companyFoundationDate" class="form-control">
 
           </div>
           <div class="col-6">
             <label for="companyPhone">Teléfono:</label>
-            <input [disabled]="createUpdate" #companyPhone="ngModel"  name="companyPhone" type="text" [(ngModel)]="company.companyPhone" class="form-control">
+            <input appPhone [disabled]="createUpdate" #companyPhone="ngModel"  name="companyPhone" type="text" [(ngModel)]="company.companyPhone" class="form-control">
           </div>
         </div>
         <div class="row">
         <div class="col-6">
           <label for="companyAddress">Domicilio:</label>
           <input [disabled]="createUpdate" #companyAddress="ngModel"  name="companyAddress" type="text" [(ngModel)]="company.companyAddress" class="form-control">
+
         </div>
         <div class="col-6">
           <label for="companyCity">Ciudad:</label>
@@ -65,7 +66,7 @@
         </div>
         <div class="col-6">
         <label for="companyEmail">Email:</label>
-        <input [disabled]="createUpdate" #companyEmail="ngModel"  name="companyEmail" type="text" [(ngModel)]="company.companyEmail" class="form-control">
+        <input email [disabled]="createUpdate" #companyEmail="ngModel"  name="companyEmail" type="text" placeholder="ejemplo@ejemplo.com" [(ngModel)]="company.companyEmail" class="form-control">
       </div>
       </div>
 

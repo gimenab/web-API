@@ -28,17 +28,16 @@ export class ABMProductsComponent implements OnInit {
   CompaniesSelected:Companies[]=[];
   currencies:Currency[]=[];
   currency:Currency;
+  currencyProd:Currency;
+  companiesProd:Companies;
+
 
   constructor(private productsService:ProductsService, private categoryService:CategoryService,
               private companyService:CompanyService, private currencyService:CurrencyService) { }
 
   ngOnInit(): void {
-    this.productsService.getAll().subscribe(resposne=>{
-      console.log(<Products[]>resposne);
-    })
     this.companyService.getAll().subscribe(response=>{
-      this.companies=<Companies[]>response;
-
+      this.CompaniesSelected=<Companies[]>response;
     })
   }
 
@@ -49,10 +48,12 @@ export class ABMProductsComponent implements OnInit {
     return this.currency.currencyDescription;
   }
 
-  getProducts(id:number){
-    this.productsService.get('/Products/Companies/'+id).subscribe(resposne=>{
-      this.products=<Products[]>resposne;
-    })
+  getProducts(selectCompany:HTMLSelectElement){
+    console.log(selectCompany.value);
+    // this.productsService.get('/Products/Companies/'+selectCompany.value).subscribe(resposne=>{
+    //   console.log(this.products);
+    //   this.products=<Products[]>resposne;
+    // })
   }
   categoryProduct(product:Products,categoryId:number){
     let prodCat:ProductCategories;
@@ -61,7 +62,7 @@ export class ABMProductsComponent implements OnInit {
   }
 
   add(product:Products){
-    let prodCat:ProductCategories;
+    let prodCat:ProductCategories =new ProductCategories();
     product.categoryID.push(prodCat);
   }
   remove(product:Products,i:number){
@@ -69,9 +70,17 @@ export class ABMProductsComponent implements OnInit {
   }
 
   create(){
+    this.companyService.getAll().subscribe(response=>{
+      this.companies=<Companies[]>response;
+    })
+    this.currencyService.getAll().subscribe(response=>{
+      this.currencies=<Currency[]>response;
+    })
     this.product=new Products();
     this.createUpdate=false;
-    let prodCat:ProductCategories;
+    let prodCat:ProductCategories=new ProductCategories();
+    this.currencyProd=new Currency();
+    this.companiesProd=new Companies();
     this.product.categoryID.push(prodCat);
   }
 
@@ -119,7 +128,7 @@ export class ABMProductsComponent implements OnInit {
         return;
       }
       this.product=aux;
-      this.createUpdate=true;
+      this.createUpdate=false;
     })
   }
 

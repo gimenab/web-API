@@ -12,5 +12,7 @@ export class Products {
 		public  categoryID:ProductCategories[];
 
 
-
+    constructor(){
+      this.productid=0;
+  }
 }

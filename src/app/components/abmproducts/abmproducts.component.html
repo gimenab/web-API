@@ -3,11 +3,18 @@
   <div class="row">
 
     <div class="col-md-5">
-      <label for="companyId">Compañia:</label>
-          <select  class="form-control" *ngFor="let company of CompaniesSelected">
-            <option (click)="getProducts(company.companyId)">{{company.companyName}}</option>
-          </select>
       <button type="button" class="btn btn-sm btn-success" (click)="create()"><i class="fas fa-plus-circle"></i></button>
+      <div class="row">
+        <div class="col-8">
+          <label for="companyId">Compañia:</label>
+              <select  #selectCompany class="form-control" >
+                <option  *ngFor="let company of CompaniesSelected"  [value]="company.companyId">{{company.companyName}}</option>
+              </select>
+        </div>
+        <div class="col-4">
+          <button type="button" class="btn btn-sm btn-info" (click)="getProducts(selectCompany)">Buscar</button>
+        </div>
+      </div>
 
       <table class="table">
         <thead class="thead-dark">
@@ -54,30 +61,32 @@
           <label for="productWebSite">sitio web de referencia:</label>
           <input [disabled]="createUpdate" #webSite="ngModel"  name="webSite" type="text" [(ngModel)]="product.productWebSite" class="form-control">
 
-
           <label for="companyId">Compañia:</label>
-          <select id="selectCompany"  [(ngModel)]="product.companyId"  [disabled]="createUpdate" #company  name="company" class="form-control" *ngFor="let company of companies">
-            <option [value]="company.companyId">{{company.companyName}}</option>
+          <select id="selectCompany"  [(ngModel)]="companiesProd"  [disabled]="createUpdate" #company  name="company" class="form-control" >
+            <option [value]="company.companyId" *ngFor="let company of companies">{{company.companyName}}</option>
           </select>
-
-            <label for="currencyId">Tipo de moneda:</label>
-            <select id="selectCurrency"  [disabled]="createUpdate"  [(ngModel)]="product.currencyId"  #currency  name="currency" class="form-control" *ngFor="let currency of currencies">
-              <option [value]="currency.currencyId">{{currency.currencyDescription}}</option>
-            </select>
-
-            <label for="productPrice">Precio:</label>
-            <input [disabled]="createUpdate" #price="ngModel"  name="price" type="text" [(ngModel)]="product.productPrice" class="form-control">
-
 
 
           <div class="row">
+            <div class="col-6">
+              <label for="currencyId">Tipo de moneda:</label>
+              <select id="selectCurrency"  [disabled]="createUpdate"  [(ngModel)]="currencyProd"  #currency  name="currency" class="form-control" >
+                <option *ngFor="let currency of currencies" [value]="currency.currencyId">{{currency.currencyCode}}</option>
+              </select>
+
+            </div>
+            <div class="col-6">
+                <label for="productPrice">Precio:</label>
+                <input [disabled]="createUpdate" #price="ngModel"  name="price" type="number" min="0" [(ngModel)]="product.productPrice" class="form-control">
+            </div>
+          </div>
+
             <label for="categoryID">Categorias:</label>
             <select id="selectCategory" #category name="category" class="form-control" *ngFor="let item of product.categoryID; let i=index">
               <option  *ngFor="let category of categories"  (click)="categoryProduct(product,category.categoryId)">{{category.categoryName}}</option>
               <button type="button" class="btn btn-light  round" (click)="remove(product,i)"><i class="far fa-minus-square red"></i></button>
             </select>
             <button type="button" class="btn btn-light  round" (click)="add(product)"><i class="fas fa-plus-circle green"></i></button>
-          </div>
 
           <br>
         <button class="btn btn-primary" [disabled]="!f.valid">Sumit</button>
