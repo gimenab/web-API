@@ -3,7 +3,7 @@
   <div class="row">
 
     <div class="col-md-5">
-      <button type="button" class="btn btn-success" (click)="create()"><i class="fas fa-plus-circle"></i></button>
+      <button type="button" class="btn btn-sm btn-success" (click)="create()"><i class="fas fa-plus-circle"></i></button>
 
       <table class="table">
         <thead class="thead-dark">
@@ -18,8 +18,8 @@
             <td>{{currencyTable.currencyCode}}</td>
             <td>{{currencyTable.currencyDescription}}</td>
             <td>
-              <button type="button" class="btn btn-danger" (click)="delete(currencyTable.currencyId)"><i class="far fa-trash-alt"></i></button>
-              <button type="button" class="btn btn-primary" (click)="Update(currencyTable.currencyId)"><i class="far fa-edit"></i></button>
+              <button type="button" class="btn btn-sm btn-danger" (click)="delete(currencyTable.currencyId)"><i class="far fa-trash-alt"></i></button>
+              <button type="button" class="btnbtn-sm  btn-primary" (click)="Update(currencyTable.currencyId)"><i class="far fa-edit"></i></button>
             </td>
           </tr>
         </tbody>

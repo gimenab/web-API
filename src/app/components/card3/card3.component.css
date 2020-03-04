@@ -1,7 +1,3 @@
-.container{
-  padding:3%
-}
-
 .card-container{
   display :flex;
   width: 100%;
@@ -36,7 +32,7 @@
     color:#333;
 
   }
-  .card2{
+  .card{
     background-color: #e9ecef85;
   }
   .card-title{
@@ -44,7 +40,3 @@
     font-family: 'Quicksand', sans-serif;
     text-align: center;
   }
-
-u {
-  text-decoration: underline;
-}

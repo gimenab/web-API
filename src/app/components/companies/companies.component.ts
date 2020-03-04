@@ -9,6 +9,10 @@ import { Companies } from 'src/app/models/companies';
 })
 export class CompaniesComponent implements OnInit {
   companies: Companies[];
+  company : Companies= new Companies();
+  showCompanies: boolean = true;
+  showCompany: boolean = false;
+  date: Date;
   constructor(private companyService:CompanyService) {
   }
 
@@ -17,6 +21,25 @@ export class CompaniesComponent implements OnInit {
       this.companies=<Companies[]>response;
        console.log(response);
      });
+    }
+
+  getCompany(company: Companies){
+    this.company= company;
+    this.date= new Date(this.company.companyFoundationDate);
+    console.log(this.company)
+    this.showCompanies= false;
+    this.showCompany= true;
+    console.log(this.showCompany);
+  }
+  onClickButton(){
+    this.showCompany= false;
+    this.showCompanies=true;
+  }
+}
+
+
+
+
     // this.companies=[{ companyName:"comp 1", companyFoundationDate:"" ,   companyAddress: "", companyCity: "",
     // companyWebSite: "", companyEmail:"",companyDescription:"",companyPhone:"",companyLogo:'https://concepto.de/wp-content/uploads/2015/03/software-1-e1550080097569.jpg'},
     // { companyName:"comp 2", companyFoundationDate:"" ,   companyAddress: "", companyCity: "",
@@ -31,6 +54,6 @@ export class CompaniesComponent implements OnInit {
     // companyWebSite: "", companyEmail:"",companyDescription:"",companyPhone:"",companyLogo:""}];
 
 
-}
 
-}
+
+

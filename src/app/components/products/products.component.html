@@ -1,15 +1,13 @@
-<div *ngIf="showCategories">
+<div class="container">
+  <div *ngIf="showCategories">
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
       <li class="breadcrumb-item active" aria-current="page">Categorías</li>
     </ol>
   </nav>
   <div  class="card-columns">
-    <div class="card" *ngFor="let category of categories" (click)="getSubcategories(category.categoryId, category.categoryName)">
-      <img [src]="category.categoryLogo | notImage" class="card-img-top">
-      <div   class="card-body">
-        <h5  class="card-title" >{{category.categoryName}}</h5>
-      </div>
+    <div class="card" *ngFor="let category of categories">
+      <card3 [category]= "category" (click)="getSubcategories(category.categoryId, category.categoryName)"></card3>
     </div>
   </div>
 </div>
@@ -17,16 +15,13 @@
 <div *ngIf="showSubcategories">
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a role="button" (click)="onClickBreadCrumb1()"><u>{{categoryName}}</u></a></li>
-      <li class="breadcrumb-item active" aria-current="page">Subcategorías</li>
+      <li class="breadcrumb-item"><a role="button" (click)="onClickBreadCrumb1()"><u>Categorias</u></a></li>
+      <li class="breadcrumb-item active">{{categoryName}}</li>
     </ol>
   </nav>
   <div  class="card-columns">
-    <div class="card"*ngFor="let sb of subcategories">
-      <img [src]="sb.categoryLogo | notImage" class="card-img-top" (click)="getProducts(sb.categoryId, sb.categoryName)">
-      <div  class="card-body">
-        <h5  class="card-title" >{{sb.categoryName}}</h5>
-      </div>
+    <div class="card"*ngFor="let sb of subcategories" >
+      <card3 [category]= "sb" (click)="getProducts(sb.categoryId, sb.categoryName)"></card3>
     </div>
   </div>
 </div>
@@ -34,39 +29,42 @@
 <div *ngIf="showProducts">
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a role="button" (click)="onClickBreadCrumb1()"><u>{{categoryName}}</u></a></li>
-      <li class="breadcrumb-item"><a role="button" (click)="onClickBreadCrumb2()"><u>{{subcategoryName}}</u></a></li>
-      <li class="breadcrumb-item active" aria-current="page">Productos</li>
+      <li class="breadcrumb-item"><a role="button" (click)="onClickBreadCrumb1()"><u>Categorias</u></a></li>
+      <li class="breadcrumb-item"><a role="button" (click)="onClickBreadCrumb2()"><u>{{categoryName}}</u></a></li>
+      <li class="breadcrumb-item active" aria-current="page">{{subcategoryName}}</li>
     </ol>
   </nav>
   <div  class="card-columns">
     <div class="card"*ngFor="let product of products">
-      <img [src]="product.productLogo | notImage" class="card-img-top" (click)="getProduct(product)">
-      <div  class="card-body">
-        <h5  class="card-title" >{{product.productName}}</h5>
-        <p class="card-text" >{{product.productDescription}}</p>
+     <card [product] ="product" (click)="getProduct(product)"></card>
       </div>
     </div>
-  </div>
 </div>
+<!-- aca se imprime el producto terminado -->
 
 <div *ngIf="showProduct">
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a role="button" (click)="onClickBreadCrumb1()"><u>{{categoryName}}</u></a></li>
-      <li class="breadcrumb-item"><a role="button" (click)="onClickBreadCrumb2()"><u>{{subcategoryName}}</u></a></li>
-      <li class="breadcrumb-item" aria-current="page"><a role="button" (click)="onClickBreadCrumb3()"><u>{{product.productName}}</u></a></li>
+      <li class="breadcrumb-item"><a role="button" (click)="onClickBreadCrumb1()"><u>Categorias</u></a></li>
+      <li class="breadcrumb-item"><a role="button" (click)="onClickBreadCrumb2()"><u>{{categoryName}}</u></a></li>
+      <li class="breadcrumb-item"><a role="button" (click)="onClickBreadCrumb3()"><u>{{subcategoryName}}</u></a></li>
+      <li class="breadcrumb-item" aria-current="page">{{product.productName}}</li>
     </ol>
   </nav>
-  <div class="media">
+  <div *ngIf="product" class="media">
     <img [src]="product.productLogo | notImage" class="mr-3" >
     <div class="media-body">
       <h5 class="mt-0">{{product.productName}}</h5>
-      {{product.productDescription}} esto es la descripcion
+      <p>Descripcion: {{product.productDescription}}</p>
+      <p>website: <a>{{product.productWebSite}}</a></p>
+      <p>compañía: <a>{{company.companyName}}</a></p>
+      <p>precio: {{product.productPrice}} {{currency.currencyCode}}</p>
     </div>
   </div>
 </div>
+</div>
 
+<!-- aca termina -->
 
 
 <!-- <div  *ngFor="let category of categories" class="btn-group btn-group-toggle" data-toggle="buttons">

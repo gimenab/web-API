@@ -18,7 +18,8 @@ export class DataService {
     return this.http.get(environment.URL+url);
   }
    getId(id:number){
-    return this.http.get(environment.URL+this.url+id)
+    return this.http.get(this.url+"/"+id)
+
   }
   create(resource){
     return  this.http.post(environment.URL+this.url, JSON.stringify(resource));
