@@ -1,8 +1,32 @@
 <div class="container">
+<div *ngIf="showCompanies" class=container>
   <h3>Empresas</h3>
   <div class="card-columns">
     <div class="card"*ngFor="let company of companies">
-      <card2 [company]="company"></card2>
+      <card2 [company]="company" (click)="getCompany(company)"></card2>
     </div>
   </div>
-<div>
+
+</div>
+
+<div *ngIf="showCompany">
+  <div>
+    <!-- boton para volver  -->
+    <button type="button" (click)="onClickButton()" class="btn btn-dark">Volver a empresas</button>
+  </div>
+  <!-- empresa (img y datos) -->
+  <div class="media">
+    <img [src]="company.companyLogo | notImage" class="mr-3"  >
+    <div class="media-body">
+      <h5 class="mt-0">{{company.companyName}}</h5>
+      <p>Descripcion: {{company.companyDescription}}</p>
+      <p>website:</p> <a>{{company.companyWebSite}}</a>
+      <p>adress: {{company.companyAddress}}</p>
+      <p>companyFoundationDate: {{date.getDay()+1}}/{{date.getMonth()+1}}/{{date.getFullYear()}}</p>
+      <p>companyCity: {{company.companyCity}}</p>
+      <p>companyEmail: {{company.companyEmail}} </p>
+      <p>companyPhone: {{company.companyPhone}}</p>
+    </div>
+  </div>
+</div>
+

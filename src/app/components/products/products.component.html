@@ -6,8 +6,8 @@
     </ol>
   </nav>
   <div  class="card-columns">
-    <div class="card" *ngFor="let category of categories" (click)="getSubcategories(category.categoryId, category.categoryName)">
-      <card3 [category]= "category"></card3>
+    <div class="card" *ngFor="let category of categories">
+      <card3 [category]= "category" (click)="getSubcategories(category.categoryId, category.categoryName)"></card3>
     </div>
   </div>
 </div>
@@ -20,8 +20,8 @@
     </ol>
   </nav>
   <div  class="card-columns">
-    <div class="card"*ngFor="let sb of subcategories">
-      <card3 [category]= "sb"></card3>
+    <div class="card"*ngFor="let sb of subcategories" >
+      <card3 [category]= "sb" (click)="getProducts(sb.categoryId, sb.categoryName)"></card3>
     </div>
   </div>
 </div>

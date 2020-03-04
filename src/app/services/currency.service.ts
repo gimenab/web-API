@@ -12,6 +12,6 @@ export class CurrencyService extends DataService {
   constructor(http:HttpClient) {
 
     super(http, environment.URL + '/Currencies');
-
+    
   }
 }
