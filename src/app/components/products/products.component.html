@@ -41,7 +41,7 @@
   </nav>
   <div  class="card-columns">
     <div class="card"*ngFor="let product of products">
-      <img [src]="product.productLogo | notImage" class="card-img-top" (click)="getProduct(product.ProductCategories[2])">
+      <img [src]="product.productLogo | notImage" class="card-img-top" (click)="getProduct(product)">
       <div  class="card-body">
         <h5  class="card-title" >{{product.productName}}</h5>
         <p class="card-text" >{{product.productDescription}}</p>
@@ -55,15 +55,14 @@
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a role="button" (click)="onClickBreadCrumb1()"><u>{{categoryName}}</u></a></li>
       <li class="breadcrumb-item"><a role="button" (click)="onClickBreadCrumb2()"><u>{{subcategoryName}}</u></a></li>
-      <li class="breadcrumb-item"><a role="button" (click)="onClickBreadCrumb3()"><u>Productos</u></a></li>
-      <li class="breadcrumb-item active" aria-current="page"></li>
+      <li class="breadcrumb-item" aria-current="page"><a role="button" (click)="onClickBreadCrumb3()"><u>{{product.productName}}</u></a></li>
     </ol>
   </nav>
   <div class="media">
-    <img [src]="" class="mr-3" >
+    <img [src]="product.productLogo | notImage" class="mr-3" >
     <div class="media-body">
-      <h5 class="mt-0">nombre</h5>
-      descrip
+      <h5 class="mt-0">{{product.productName}}</h5>
+      {{product.productDescription}} esto es la descripcion
     </div>
   </div>
 </div>

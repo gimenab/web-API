@@ -1,5 +1,3 @@
-
-
 import { CategoryService } from './../../services/category.service';
 import { ProductsService } from './../../services/products.service';
 import { Component, OnInit } from '@angular/core';
@@ -54,19 +52,13 @@ export class ProductsComponent implements OnInit {
     this.showProducts=true;
     this.showProduct= false;
   }
-  getProduct(id : any){
-    console.log("ha entraoo")
-    console.log(id);
-    this.productService.get("/Products/Categories/"+id).subscribe(response=>{
-      this.product= <Products>response;
-      console.log(this.product.productName);
-    });
-    console.log(this.product);
+
+  getProduct(producto : Products){
+    this.product= producto;
     this.showCategories=false;
     this.showSubcategories=false;
     this.showProducts=false;
     this.showProduct= true;
-
   }
   onClickBreadCrumb1(){
     this.showCategories=true;
