@@ -1,7 +1,7 @@
 import { CategoryService } from './../../services/category.service';
-import { Categories } from './../../models/categories';
+import { Categories } from 'src/app/models/categories';
 import { Component, OnInit } from '@angular/core';
-import { Message } from './../../models/message';
+import { Message } from 'src/app/models/message';
 import Swal from 'sweetalert2';
 import 'sweetalert2/src/sweetalert2.scss';
 

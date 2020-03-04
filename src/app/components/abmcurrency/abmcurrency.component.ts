@@ -1,7 +1,7 @@
 import { CurrencyService } from './../../services/currency.service';
-import { Currency } from './../../models/Currency';
+import { Currency } from 'src/app/models/Currency';
 import { Component, OnInit } from '@angular/core';
-import { Message } from './../../models/Message';
+import { Message } from 'src/app/models/Message';
 import Swal from 'sweetalert2';
 import 'sweetalert2/src/sweetalert2.scss';
 
@@ -16,18 +16,30 @@ export class ABMCurrencyComponent implements OnInit {
   currencies:Currency[];
   createUpdate:boolean=true;
   message:Message=new Message(Swal);
+  search:string;
 
   constructor(private currencyService:CurrencyService) { }
 
   ngOnInit(): void {
-    this.currencyService.getAll().subscribe(response=>{
-      this.currencies=<Currency[]>response;
-    })
+   this.searchCurrency();
   }
 
   create(){
     this.currency=new Currency();
     this.createUpdate=false;
+  }
+
+  searchCurrency(){
+    if(!this.search){
+      this.currencyService.getAll().subscribe(response=>{
+        this.currencies=<Currency[]>response;
+      })
+    }else{
+      this.currencyService.get("/Currencies/search?orderBy='CurrencyCode'&value="+this.search).subscribe(response=>{
+        this.currencies=<Currency[]>response;
+        console.log(this.currencies);
+      })
+    }
   }
 
   delete(id:number){
@@ -52,6 +64,7 @@ export class ABMCurrencyComponent implements OnInit {
          this.currencyService.delete(id).subscribe(response=>{
            if(response=='ok'){
             this.message.alertConfirm();
+            this.searchCurrency();
           }else{
            if(response=='exists'){
               this.message.error=true;
@@ -81,7 +94,7 @@ export class ABMCurrencyComponent implements OnInit {
 
   submit(f){
     let aux:Currency;
-
+    console.log(this.currency);
     if(this.currency.currencyId==0){
       this.message.success='create';
       this.currencyService.create(this.currency).subscribe(response=>{
@@ -91,6 +104,7 @@ export class ABMCurrencyComponent implements OnInit {
           this.message.alertConfirm();
           this.currency=new Currency();
           this.createUpdate=true;
+          this.searchCurrency();
           return;
         }
 
@@ -118,6 +132,7 @@ export class ABMCurrencyComponent implements OnInit {
           this.message.alertConfirm();
           this.currency=new Currency();
           this.createUpdate=true;
+          this.searchCurrency();
           return;
         }
 
