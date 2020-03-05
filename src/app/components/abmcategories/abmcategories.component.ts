@@ -18,8 +18,8 @@ export class ABMCategoriesComponent implements OnInit {
   selectCategory = [{string : 'categoryName'}];
   message: Message = new Message(Swal);
   createUpdate:boolean =true;
-  search:string;
   fathers:Categories[]=[];
+  search:string;
 
 
   constructor(private categoryService: CategoryService, private renderer:Renderer2) {
