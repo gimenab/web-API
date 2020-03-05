@@ -29,7 +29,7 @@
     </div>
     <div class="col-md-1"></div>
     <div class="col-md-5">
-      <form #f="ngForm" (ngSubmit)="submit(f)">
+      <form #f="ngForm" (ngSubmit)="submit(f, currency,selectCompany)">
 
         <label for="productName">Nombre:</label>
         <input [disabled]="createUpdate" #name="ngModel" type="text" name="name" [(ngModel)]="product.productName" class="form-control" required minlength="3">
@@ -52,7 +52,7 @@
           <input [disabled]="createUpdate" #webSite="ngModel"  name="webSite" type="text" [(ngModel)]="product.productWebSite" class="form-control">
 
           <label for="companyId">Compañia:</label>
-          <select id="selectCompany"  [(ngModel)]="companiesProd"  [disabled]="createUpdate" #company  name="company" class="form-control" >
+          <select id="selectCompany" #selectCompany [(ngModel)]="companiesProd"  [disabled]="createUpdate" #company  name="company" class="form-control" >
             <option [value]="company.companyId" *ngFor="let company of companies">{{company.companyName}}</option>
           </select>
 

@@ -64,7 +64,7 @@
         </div>
         <div class="form-group">
           <label for="selectCategory">Seleccionar Categoria Superior</label>
-          <select [disabled]="createUpdate" ngModel name="father" #father="ngModel" id ="selectCategoryFather" class="form-control">
+          <select [disabled]="createUpdate" name="father" [(ngModel)]="category.parentCategoryId" id ="selectCategoryFather" class="form-control">
             <option *ngFor="let cF of categoryFather" [value]="cF.categoryId">{{cF.categoryName}}</option>
           </select>
 <!-- >>>>>>> 1bc94174e7a580bafd015f60718004a44fcbaf7b -->

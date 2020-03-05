@@ -45,11 +45,11 @@ export class ABMProductsComponent implements OnInit {
 
   searchProducts(){
     if(!this.search){
-      this.currencyService.getAll().subscribe(response=>{
-        this.currencies=<Currency[]>response;
-      })
+      // this.productsService.getAll().subscribe(response=>{
+      //   this.products=<Products[]>response;
+      // })
     }else{
-      this.currencyService.get("/Products/search?orderBy=ProductName&value="+this.search).subscribe(response=>{
+      this.productsService.get("/Products/search?orderBy=ProductName&value="+this.search).subscribe(response=>{
         this.products=<Products[]>response;
       })
     }
@@ -58,15 +58,20 @@ export class ABMProductsComponent implements OnInit {
   getcode(id:number){
     this.currencyService.getId(id).subscribe(response=>{
       this.currency=<Currency>response;
+      return this.currency.currencyCode;
     })
-    return this.currency.currencyDescription;
   }
 
 
   add(product:Products,selectedCategory){
+    console.log(selectedCategory.value);
+    this.categoryService.getId(selectedCategory.value).subscribe(response=>{
+      let aux:Categories=<Categories>response;
     let prodCat:ProductCategories =new ProductCategories();
-    prodCat.categoryId= selectedCategory.value;
+    prodCat.categoryId= aux.categoryId;
+    prodCat.categoryName= aux.categoryName;
     product.categoryID.push(prodCat);
+  })
   }
   remove(product:Products,i:number){
     product.categoryID.splice(i,1);
@@ -119,6 +124,10 @@ export class ABMProductsComponent implements OnInit {
       }
     })
   }
+  ComAndCurSearch(selectedCategory,selectCompany){
+    this.product.companyId=selectCompany.value;
+    this.product.currencyId=selectedCategory.value;
+  }
 
   Update(id:number){
     let aux:Products;
@@ -134,9 +143,9 @@ export class ABMProductsComponent implements OnInit {
     })
   }
 
-  submit(f){
+  submit(f,currency,selectCompany){
     let aux:Products;
-
+    this.ComAndCurSearch(currency,selectCompany);
     if(this.product.productid==0){
       this.message.success='create';
       this.productsService.create(this.product).subscribe(response=>{
@@ -144,6 +153,7 @@ export class ABMProductsComponent implements OnInit {
 
         if(aux.productid>0){
           this.message.alertConfirm();
+          this.searchProducts();
           this.product=new Products();
           this.createUpdate=true;
           return;
@@ -170,6 +180,7 @@ export class ABMProductsComponent implements OnInit {
 
         if(response=='ok'){
           this.message.alertConfirm();
+          this.searchProducts();
           this.product=new Products();
           this.createUpdate=true;
           return;

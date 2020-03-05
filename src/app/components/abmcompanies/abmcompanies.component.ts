@@ -82,14 +82,9 @@ export class ABMCompaniesComponent implements OnInit {
     })
   }
 
-  submit(f,inputDate){
+  submit(f){
     let aux:Companies;
-    this.companyFoundationDate=new Date(inputDate.value);
-    if(this.companyFoundationDate<new Date()){
-      inputDate.nativeElement.style="border: 2px solid red;"
-      return;
-    }
-    this.renderer.removeStyle(inputDate.nativeElement,"border");
+
     if(this.company.companyId==0){
       this.message.success='create';
       console.log(this.company);
