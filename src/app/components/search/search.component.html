@@ -1,10 +1,24 @@
 <div class="container main-container">
-  <input class="form-control "(keyup.enter)="search()" name="productSearch" [(ngModel)]="productSearch" type="text" placeholder="Producto" aria-label="Search">
-</div>
-<div class="container">
-  <div  class="card-columns">
-    <div class="card"*ngFor="let product of products">
-      <card [product]="product"></card>
+  <div *ngIf="selected">
+    <input class="form-control "(keyup.enter)="search()" name="productSearch" [(ngModel)]="productSearch" type="text" placeholder="Producto" aria-label="Search">
+    <div class="container">
+      <div *ngIf="products.length>=0" class="card-columns">
+        <div class="card"*ngFor="let product of products">
+          <card [product]="product" (click)="onClick(product)"></card>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="!selected" class="media">
+    <button type="button" (click)="back()" class="btn btn-dark">Volver a empresas</button>
+    <img class="img-card-product" [src]="product.productLogo | notImage" >
+    <div class="media-body">
+      <h5 class="mt-0">{{product.productName}}</h5>
+      <p>Descripcion: {{product.productDescription}}</p>
+      <p>website: <a>{{product.productWebSite}}</a></p>
+      <p>compañía: <a>{{company.companyName}}</a></p>
+      <p>precio: {{product.productPrice}} {{currency.currencyCode}}</p>
     </div>
   </div>
 </div>

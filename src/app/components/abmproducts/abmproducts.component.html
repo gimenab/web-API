@@ -3,18 +3,8 @@
   <div class="row">
 
     <div class="col-md-5">
+      <input type="text" [(ngModel)]="search" name="search" placeholder="Empresa" (keyup.enter)="searchProducts()">
       <button type="button" class="btn btn-sm btn-success" (click)="create()"><i class="fas fa-plus-circle"></i></button>
-      <div class="row">
-        <div class="col-8">
-          <label for="companyId">Compañia:</label>
-              <select  #selectCompany class="form-control" >
-                <option  *ngFor="let company of CompaniesSelected"  [value]="company.companyId">{{company.companyName}}</option>
-              </select>
-        </div>
-        <div class="col-4">
-          <button type="button" class="btn btn-sm btn-info" (click)="getProducts(selectCompany)">Buscar</button>
-        </div>
-      </div>
 
       <table class="table">
         <thead class="thead-dark">
@@ -81,12 +71,25 @@
             </div>
           </div>
 
-            <label for="categoryID">Categorias:</label>
-            <select id="selectCategory" #category name="category" class="form-control" *ngFor="let item of product.categoryID; let i=index">
-              <option  *ngFor="let category of categories"  (click)="categoryProduct(product,category.categoryId)">{{category.categoryName}}</option>
-              <button type="button" class="btn btn-light  round" (click)="remove(product,i)"><i class="far fa-minus-square red"></i></button>
-            </select>
-            <button type="button" class="btn btn-light  round" (click)="add(product)"><i class="fas fa-plus-circle green"></i></button>
+          <label for="categoryID">Categorias:</label>
+            <div class="row">
+              <div class="col-8">
+                <select [disabled]="createUpdate"  #selectedCategory id="selectCategory" name="category">
+                  <option  *ngFor="let category of categories" [value]="category.categoryId">{{category.categoryName}}</option>
+                </select>
+              </div>
+              <button [disabled]="createUpdate" type="button" class="btn btn-light  round" (click)="add(product,selectedCategory)"><i class="fas fa-plus-circle green"></i></button>
+            </div>
+            <table >
+              <tbody>
+                <tr *ngFor="let category of product.categoryID; let i=index">
+                  <td>
+                    {{category.categoryName}}
+                    <button type="button" class="btn btn-light  round" (click)="remove(product,i)"><i class="far fa-minus-square red"></i></button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
 
           <br>
         <button class="btn btn-primary" [disabled]="!f.valid">Sumit</button>

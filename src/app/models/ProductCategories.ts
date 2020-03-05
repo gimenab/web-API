@@ -5,5 +5,6 @@ export class ProductCategories{
 
   constructor(){
     this.productCategoryId=0;
+    this.categoryId=0;
   }
 }

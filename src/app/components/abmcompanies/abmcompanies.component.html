@@ -24,7 +24,7 @@
             <td>{{companyTable.companyPhone}}</td>
             <td>
               <button type="button" class="btn btn-sm btn-danger" (click)="delete(companyTable.companyId)"><i class="far fa-trash-alt"></i></button>
-              <button type="button" class="btn btn-sm btn-primary" (click)="Update(companyTable.companyId)"><i class="far fa-edit"></i></button>
+              <button type="button" class="btn btn-sm btn-primary" (click)="Update(companyTable.companyId,inputDate)"><i class="far fa-edit"></i></button>
             </td>
           </tr>
         </tbody>
@@ -41,7 +41,7 @@
         <div class="row">
           <div class="col-6">
             <label for="companyFoundationDate">Fecha de fundación:</label>
-            <input  [disabled]="createUpdate" #FoundationDate="ngModel"  name="FoundationDate" type="date" [(ngModel)]="company.companyFoundationDate" class="form-control">
+            <input  [disabled]="createUpdate" [max]="date" required #inputDate  name="FoundationDate" type="date" [(ngModel)]="companyFoundationDate" class="form-control">
 
           </div>
           <div class="col-6">

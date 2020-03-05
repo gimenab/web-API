@@ -15,6 +15,7 @@
 <div *ngIf="showSubcategories">
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
+            <!-- aca tira el error de cambiar Categorias por "LLAMANOS" -->
       <li class="breadcrumb-item"><a role="button" (click)="onClickBreadCrumb1()"><u>Categorias</u></a></li>
       <li class="breadcrumb-item active">{{categoryName}}</li>
     </ol>
@@ -29,6 +30,7 @@
 <div *ngIf="showProducts">
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
+            <!-- aca tira el error de cambiar Categorias por "LLAMANOS" -->
       <li class="breadcrumb-item"><a role="button" (click)="onClickBreadCrumb1()"><u>Categorias</u></a></li>
       <li class="breadcrumb-item"><a role="button" (click)="onClickBreadCrumb2()"><u>{{categoryName}}</u></a></li>
       <li class="breadcrumb-item active" aria-current="page">{{subcategoryName}}</li>
@@ -40,11 +42,11 @@
       </div>
     </div>
 </div>
-<!-- aca se imprime el producto terminado -->
 
 <div *ngIf="showProduct">
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
+      <!-- aca tira el error de cambiar Categorias por "LLAMANOS" -->
       <li class="breadcrumb-item"><a role="button" (click)="onClickBreadCrumb1()"><u>Categorias</u></a></li>
       <li class="breadcrumb-item"><a role="button" (click)="onClickBreadCrumb2()"><u>{{categoryName}}</u></a></li>
       <li class="breadcrumb-item"><a role="button" (click)="onClickBreadCrumb3()"><u>{{subcategoryName}}</u></a></li>

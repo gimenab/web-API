@@ -1,6 +1,6 @@
+import { Categories } from './../../models/categories';
 import { CategoryService } from './../../services/category.service';
-import { Categories } from 'src/app/models/categories';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 import { Message } from 'src/app/models/message';
 import Swal from 'sweetalert2';
 import 'sweetalert2/src/sweetalert2.scss';
@@ -18,23 +18,44 @@ export class ABMCategoriesComponent implements OnInit {
   selectCategory = [{string : 'categoryName'}];
   message: Message = new Message(Swal);
   createUpdate:boolean =true;
+  fathers:Categories[]=[];
   search:string;
 
 
-
-  constructor(private categoryService: CategoryService) {
+  constructor(private categoryService: CategoryService, private renderer:Renderer2) {
 
    }
 
+   searchfather(id:number){
+     console.log(id)
+     if(id==0){
+       return "";
+     }
+     else{
+       for(let i=0;this.fathers.length;i++){
+         if(this.fathers[i].categoryId==id){
+           return this.fathers[i].categoryName;
+         };
+       }
+     }
+    // this.categoryService.getId(id).subscribe((response)=>{
+    //   let aux:Categories=<Categories>response;
+    //   console.log(aux.categoryName);
+    //   return aux.categoryName;
+    // })
+   }
+
   ngOnInit(): void {
-    this.categoryService.getAll().subscribe( response => {
-      this.categories =  response as Categories[];
-    });
-    this.categoryService.get('/Categories/father').subscribe( response => {
-      this.categoryFather =  response as Categories[];
-    });
+    this.searchCategorie();
+    this.categoryService.get('/Categories/father').subscribe(response=>{
+      this.fathers=<Categories[]>response;
+    })
   }
+
   create() {
+    this.categoryService.get('/Categories/father').subscribe( response => {
+      this.categoryFather =<Categories[]>response;
+    });
     this.category = new Categories();
     this.createUpdate = false;
   }
@@ -62,6 +83,7 @@ export class ABMCategoriesComponent implements OnInit {
          this.categoryService.delete(id).subscribe(response => {
            if ( response == 'ok') {
             this.message.alertConfirm();
+            this.searchCategorie();
           } else {
            if ( response == 'exists') {
               this.message.error = true;
@@ -75,6 +97,9 @@ export class ABMCategoriesComponent implements OnInit {
     });
   }
   update(id: number) {
+    this.categoryService.get('/Categories/father').subscribe( response => {
+      this.categoryFather =<Categories[]>response;
+    });
         let aux: Categories;
         this.message.success = 'update';
         this.categoryService.get( '/Categories/' + id ).subscribe (response => {
@@ -88,7 +113,7 @@ export class ABMCategoriesComponent implements OnInit {
          });
 
       }
-  submit(f) {
+  submit(f, name) {
      let aux: Categories;
 
      if (this.category.categoryId == 0) {
@@ -99,6 +124,7 @@ export class ABMCategoriesComponent implements OnInit {
            this.message.alertConfirm();
            this.category = new Categories();
            this.createUpdate = true;
+           this.searchCategorie();
            return;
          } else {
           if (aux.categoryId == 0) {
@@ -118,6 +144,7 @@ export class ABMCategoriesComponent implements OnInit {
     this.message.alertConfirm();
     this.category = new Categories();
     this.createUpdate = true;
+    this.searchCategorie();
     return;
     } else {
     if (response == "exists") {
@@ -130,6 +157,7 @@ export class ABMCategoriesComponent implements OnInit {
           }
         }
       });
+    this.renderer.removeStyle(name.nativeElement,"border");
     }
 
   }
@@ -139,7 +167,7 @@ export class ABMCategoriesComponent implements OnInit {
         this.categories=<Categories[]>response;
       })
     }else{
-      this.categoryService.get("/Categories/search?orderBy='CategoryName'&value="+this.search).subscribe(response=>{
+      this.categoryService.get("/Categories/search?orderBy=CategoryName&value="+this.search).subscribe(response=>{
         this.categories=<Categories[]>response;
         console.log(this.categories);
       });

@@ -62,12 +62,14 @@ export class ProductsComponent implements OnInit {
 
 
   getProduct(producto : Products){
+    console.log(producto.companyId);
     this.companyService.getId(producto.companyId).subscribe(response=>{
       this.company=<Companies>response;
-      console.log(response);
     });
+    console.log(producto.currencyId);
     this.currencyService.getId(producto.currencyId).subscribe(response=>{
       this.currency=<Currency>response;
+      console.log(this.currency);
     });
     this.product= producto;
     this.showCategories=false;

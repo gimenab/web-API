@@ -16,12 +16,12 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>{{category.categoryName}}</td>
-            <td>{{category.categoryId}}</td>
+          <tr *ngFor="let categoryTable of categories" >
+            <td>{{categoryTable.categoryName}}</td>
+            <td>{{searchfather(categoryTable.parentCategoryId)}}</td>
             <td>
-              <button type="button" class="btn btn-sm btn-primary"  (click)="update(category.categoryId)"><i class="fas fa-edit"></i></button>
-              <button type="button" class="btn btn-sm btn-danger" (click)="delete(category.categoryId)"><i class="fas fa-trash-alt"></i></button>
+              <button type="button" class="btn btn-sm btn-primary"  (click)="update(categoryTable.categoryId)"><i class="fas fa-edit"></i></button>
+              <button type="button" class="btn btn-sm btn-danger" (click)="delete(categoryTable.categoryId)"><i class="fas fa-trash-alt"></i></button>
             </td>
           </tr>
         </tbody>
@@ -29,6 +29,7 @@
     </div>
     <div class="col-md-1"></div>
     <div class="col-md-5">
+<!-- <<<<<<< HEAD
 
       <form #f="ngForm" (ngSubmit)="submit(f)" >
         <div class="row">
@@ -49,7 +50,24 @@
               <option *ngFor="let categories of selectCategory" [value]="category.categoryId">{{category.categoryName}}</option>
             </select>
           </div>
+        </div> -->
+
+      <form #f="ngForm" (ngSubmit)="submit(f,name)" >
+        <div class="form-group">
+          <label for="categoryName">Nombre de Subcategoria</label>
+          <input id="name" #name [disabled]="createUpdate" required name="nameCategory" [(ngModel)]="category.categoryName"  placeholder="Nombre de Subcategoría"  type="text" class="form-control" >
+          <div *ngIf="createUpdate && f.errors">
+            <div *ngIf="!name.valid && name.touched" class ="alert alert-danger">
+               <div *ngIf ="name.errors.required">Nombre de Categoria es requerido</div>
+             </div>
+          </div>
         </div>
+        <div class="form-group">
+          <label for="selectCategory">Seleccionar Categoria Superior</label>
+          <select [disabled]="createUpdate" ngModel name="father" #father="ngModel" id ="selectCategoryFather" class="form-control">
+            <option *ngFor="let categories of selectCategory" [value]="category.categoryId">{{category.categoryName}}</option>
+          </select>
+<!-- >>>>>>> 1bc94174e7a580bafd015f60718004a44fcbaf7b -->
         </div>
 
         <label for="companyLogo">Logo:</label>
@@ -61,3 +79,4 @@
   </div>
 </div>
 
+<div></div>
