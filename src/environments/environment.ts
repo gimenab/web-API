@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  URL :'http://192.168.0.124/apiNaranja/api'
+  URL :'http://192.168.1.7/apiNaranja/api'
 };
 
 /*

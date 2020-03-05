@@ -4,7 +4,6 @@ import { Component, OnInit } from '@angular/core';
 import { Message } from './../../models/Message';
 import Swal from 'sweetalert2'
 import 'sweetalert2/src/sweetalert2.scss'
-import { CompileShallowModuleMetadata } from '@angular/compiler';
 
 @Component({
   selector: 'app-abmcompanies',
@@ -18,13 +17,12 @@ export class ABMCompaniesComponent implements OnInit {
   createUpdate:boolean=true;
   message:Message=new Message(Swal);
   search:string;
+  companyFoundationDate:Date;
 
   constructor(private companyService:CompanyService) { }
 
   ngOnInit(): void {
-    this.companyService.getAll().subscribe(response=>{
-      this.companies=<Companies[]>response;
-    })
+    this.searchCompanies();
   }
 
   create(){
@@ -54,6 +52,7 @@ export class ABMCompaniesComponent implements OnInit {
          this.companyService.delete(id).subscribe(response=>{
            if(response=='ok'){
             this.message.alertConfirm();
+            this.searchCompanies();
           }else{
            if(response=='exists'){
               this.message.error=true;
@@ -70,7 +69,7 @@ export class ABMCompaniesComponent implements OnInit {
   Update(id:number){
     let aux:Companies;
     this.message.success="update";
-    this.companyService.get('api/Companies/'+id).subscribe(response=>{
+    this.companyService.get('/Companies/'+id).subscribe(response=>{
       aux=<Companies>response;
       if(aux.companyId==-1){
         this.message.alertError();
@@ -84,6 +83,11 @@ export class ABMCompaniesComponent implements OnInit {
   submit(f){
     let aux:Companies;
 
+    if(this.companyFoundationDate<new Date()){
+      console.log('Error');
+      return;
+    }
+
     if(this.company.companyId==0){
       this.message.success='create';
       console.log(this.company);
@@ -95,6 +99,7 @@ export class ABMCompaniesComponent implements OnInit {
           this.message.alertConfirm();
           this.company=new Companies();
           this.createUpdate=true;
+          this.searchCompanies();
           return;
         }
 
@@ -120,6 +125,7 @@ export class ABMCompaniesComponent implements OnInit {
           this.message.alertConfirm();
           this.company=new Companies();
           this.createUpdate=true;
+          this.searchCompanies();
           return;
         }
 
@@ -143,7 +149,7 @@ export class ABMCompaniesComponent implements OnInit {
         this.companies=<Companies[]>response;
       })
     }else{
-      this.companyService.get("/Companies/search?orderBy='CurrencyCode'&value="+this.search).subscribe(response=>{
+      this.companyService.get("/Companies/search?orderBy=CompanyName&value="+this.search).subscribe(response=>{
         this.companies=<Companies[]>response;
         console.log(this.companies);
       });

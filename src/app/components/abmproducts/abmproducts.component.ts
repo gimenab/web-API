@@ -25,7 +25,7 @@ export class ABMProductsComponent implements OnInit {
   message:Message=new Message(Swal);
   categories:Categories[]=[];
   companies:Companies[]=[];
-  CompaniesSelected:Companies[]=[];
+  search:string;
   currencies:Currency[]=[];
   currency:Currency;
   currencyProd:Currency;
@@ -36,9 +36,22 @@ export class ABMProductsComponent implements OnInit {
               private companyService:CompanyService, private currencyService:CurrencyService) { }
 
   ngOnInit(): void {
-    this.companyService.getAll().subscribe(response=>{
-      this.CompaniesSelected=<Companies[]>response;
+    this.searchProducts();
+    this.categoryService.get('/Categories/children').subscribe(response=>{
+      this.categories =<Categories[]>response;
     })
+  }
+
+  searchProducts(){
+    if(!this.search){
+      this.currencyService.getAll().subscribe(response=>{
+        this.currencies=<Currency[]>response;
+      })
+    }else{
+      this.currencyService.get("/Products/search?orderBy=ProductName&value="+this.search).subscribe(response=>{
+        this.products=<Products[]>response;
+      })
+    }
   }
 
   getcode(id:number){
@@ -48,13 +61,7 @@ export class ABMProductsComponent implements OnInit {
     return this.currency.currencyDescription;
   }
 
-  getProducts(selectCompany:HTMLSelectElement){
-    console.log(selectCompany.value);
-    // this.productsService.get('/Products/Companies/'+selectCompany.value).subscribe(resposne=>{
-    //   console.log(this.products);
-    //   this.products=<Products[]>resposne;
-    // })
-  }
+
   categoryProduct(product:Products,categoryId:number){
     let prodCat:ProductCategories;
     prodCat.categoryId=categoryId;
