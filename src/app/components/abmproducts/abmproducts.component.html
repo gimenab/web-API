@@ -20,7 +20,7 @@
             <td>{{getcode(prodcutTable.currencyId)}} {{prodcutTable.productPrice}}</td>
             <td>
               <button type="button" class="btn btn-sm btn-danger" (click)="delete(prodcutTable.productid)"><i class="far fa-trash-alt"></i></button>
-              <button type="button" class="btn btn-sm btn-primary" (click)="Update(prodcutTable.productid)"><i class="far fa-edit"></i></button>
+              <button type="button" class="btn btn-sm btn-primary" (click)="Update(prodcutTable.productid,currency,selectCompany)"><i class="far fa-edit"></i></button>
             </td>
           </tr>
         </tbody>

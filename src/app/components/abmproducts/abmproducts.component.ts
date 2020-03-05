@@ -112,6 +112,7 @@ export class ABMProductsComponent implements OnInit {
          this.productsService.delete(id).subscribe(response=>{
            if(response=='ok'){
             this.message.alertConfirm();
+            this.searchProducts();
           }else{
            if(response=='exists'){
               this.message.error=true;
@@ -129,7 +130,13 @@ export class ABMProductsComponent implements OnInit {
     this.product.currencyId=selectedCategory.value;
   }
 
-  Update(id:number){
+  Update(id:number,selectedCategory,selectCompany){
+    this.companyService.getAll().subscribe(response=>{
+      this.companies=<Companies[]>response;
+    })
+    this.currencyService.getAll().subscribe(response=>{
+      this.currencies=<Currency[]>response;
+    })
     let aux:Products;
     this.message.success="update";
     this.productsService.get('/Products/'+id).subscribe(response=>{
@@ -139,6 +146,8 @@ export class ABMProductsComponent implements OnInit {
         return;
       }
       this.product=aux;
+      selectCompany.value=this.product.companyId;
+      selectedCategory.value= this.product.currencyId;
       this.createUpdate=false;
     })
   }

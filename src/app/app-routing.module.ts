@@ -19,7 +19,7 @@ const routes: Routes = [
   {path:'products',component:ProductsComponent},
   {path:'admin',component:HomeAdminComponent},
   {path:'abmCompanies',component:ABMCompaniesComponent},
-  {path:'abmCategories',component:ABMCategoriesComponent},
+  // {path:'abmCategories',component:ABMCategoriesComponent},
   {path:'abmCurrencies',component:ABMCurrencyComponent},
   {path:'abmProducts',component:ABMProductsComponent},
   {path:'search/:search',component:SearchComponent},
