@@ -6,5 +6,6 @@ export class Categories {
 
   constructor(){
     this.categoryId=0;
+    this.parentCategoryId=0;
   }
 }
