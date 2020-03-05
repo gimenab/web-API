@@ -18,6 +18,7 @@ export class ABMCompaniesComponent implements OnInit {
   message:Message=new Message(Swal);
   search:string;
   companyFoundationDate:Date;
+  date:Date=new Date();
 
   constructor(private companyService:CompanyService) { }
 
@@ -66,7 +67,7 @@ export class ABMCompaniesComponent implements OnInit {
     })
   }
 
-  Update(id:number){
+  Update(id:number,inputDate){
     let aux:Companies;
     this.message.success="update";
     this.companyService.get('/Companies/'+id).subscribe(response=>{
@@ -77,6 +78,7 @@ export class ABMCompaniesComponent implements OnInit {
       }
       this.company=aux;
       this.createUpdate=false;
+      inputDate.value=aux.companyFoundationDate.getUTCDate()
     })
   }
 
