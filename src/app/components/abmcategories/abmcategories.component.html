@@ -19,7 +19,7 @@
         <tbody>
           <tr *ngFor="let categoryTable of categories" >
             <td>{{categoryTable.categoryName}}</td>
-            <td>{{searchfather(categoryTable.categoryId)}}</td>
+            <td>{{searchfather(categoryTable.parentCategoryId)}}</td>
             <td>
               <button type="button" class="btn btn-sm btn-primary"  (click)="update(categoryTable.categoryId)"><i class="fas fa-edit"></i></button>
               <button type="button" class="btn btn-sm btn-danger" (click)="delete(categoryTable.categoryId)"><i class="fas fa-trash-alt"></i></button>
@@ -33,10 +33,10 @@
       <form #f="ngForm" (ngSubmit)="submit(f,name)" >
         <div class="form-group">
           <label for="categoryName">Nombre de Subcategoria</label>
-          <input id="name" #name [disabled]="createUpdate" required name="nameCategory" [(ngModel)]="category.categoryName" #nameCategory ="ngModel"  placeholder="Nombre de Subcategoría" id="nameCategoty" type="text" class="form-control" >
+          <input id="name" #name [disabled]="createUpdate" required name="nameCategory" [(ngModel)]="category.categoryName"  placeholder="Nombre de Subcategoría"  type="text" class="form-control" >
           <div *ngIf="createUpdate && f.errors">
-            <div *ngIf="!nameCategory.valid && nameCategory.touched" class ="alert alert-danger">
-               <div *ngIf ="nameCategory.errors.required">Nombre de Categoria es requerido</div>
+            <div *ngIf="!name.valid && name.touched" class ="alert alert-danger">
+               <div *ngIf ="name.errors.required">Nombre de Categoria es requerido</div>
              </div>
           </div>
         </div>

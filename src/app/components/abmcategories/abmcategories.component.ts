@@ -19,6 +19,7 @@ export class ABMCategoriesComponent implements OnInit {
   message: Message = new Message(Swal);
   createUpdate:boolean =true;
   search:string;
+  fathers:Categories[]=[];
 
 
   constructor(private categoryService: CategoryService, private renderer:Renderer2) {
@@ -26,14 +27,29 @@ export class ABMCategoriesComponent implements OnInit {
    }
 
    searchfather(id:number){
-    this.categoryService.getId(id).subscribe((response)=>{
-      let aux:Categories=<Categories>response;
-      return aux.categoryName;
-    })
+     console.log(id)
+     if(id==0){
+       return "";
+     }
+     else{
+       for(let i=0;this.fathers.length;i++){
+         if(this.fathers[i].categoryId==id){
+           return this.fathers[i].categoryName;
+         };
+       }
+     }
+    // this.categoryService.getId(id).subscribe((response)=>{
+    //   let aux:Categories=<Categories>response;
+    //   console.log(aux.categoryName);
+    //   return aux.categoryName;
+    // })
    }
 
   ngOnInit(): void {
     this.searchCategorie();
+    this.categoryService.get('/Categories/father').subscribe(response=>{
+      this.fathers=<Categories[]>response;
+    })
   }
 
   create() {
