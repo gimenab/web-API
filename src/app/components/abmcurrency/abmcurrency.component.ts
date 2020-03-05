@@ -35,7 +35,7 @@ export class ABMCurrencyComponent implements OnInit {
         this.currencies=<Currency[]>response;
       })
     }else{
-      this.currencyService.get("/Currencies/search?orderBy='CurrencyDescription'&value="+this.search).subscribe(response=>{
+      this.currencyService.get("/Currencies/search?orderBy=CurrencyDescription&value="+this.search).subscribe(response=>{
         this.currencies=<Currency[]>response;
         console.log(this.currencies);
       })

@@ -29,11 +29,15 @@ export class PhoneDirective {
         return  value.substr(0,4)+'-'+value.substr(4,3)+'-'+value.substr(7);
       }
     }
-    console.log(value)
     if(value.length>11 && (value[4]=='-'&& value[8]=='-')){
 
       let aux = value.substr(0,4)+value.substr(5,3)+value.substr(9);
       if(this.validate(aux)){
+        return  value;
+      }
+    }
+    if(value.length>11 && value.length<15 ){
+      if(this.validate(value)){
         return  value;
       }
     }

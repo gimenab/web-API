@@ -17,12 +17,12 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>{{category.categoryName}}</td>
-            <td>{{category.categoryId}}</td>
+          <tr *ngFor="let categoryTable of categories" >
+            <td>{{categoryTable.categoryName}}</td>
+            <td>{{searchfather(categoryTable.categoryId)}}</td>
             <td>
-              <button type="button" class="btn btn-sm btn-primary"  (click)="update(category.categoryId)"><i class="fas fa-edit"></i></button>
-              <button type="button" class="btn btn-sm btn-danger" (click)="delete(category.categoryId)"><i class="fas fa-trash-alt"></i></button>
+              <button type="button" class="btn btn-sm btn-primary"  (click)="update(categoryTable.categoryId)"><i class="fas fa-edit"></i></button>
+              <button type="button" class="btn btn-sm btn-danger" (click)="delete(categoryTable.categoryId)"><i class="fas fa-trash-alt"></i></button>
             </td>
           </tr>
         </tbody>
