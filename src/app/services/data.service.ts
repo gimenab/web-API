@@ -23,7 +23,6 @@ export class DataService {
 
   }
   create(resource){
-    console.log('paso');
     return  this.http.post(environment.URL+this.url, JSON.stringify(resource), this.options);
   }
 

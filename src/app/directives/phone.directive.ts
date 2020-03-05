@@ -38,7 +38,7 @@ export class PhoneDirective {
     }
     if(value.length>11 && value.length<15 ){
       if(this.validate(value)){
-        return  value;
+        return  value.substr(0,4)+'-'+value.substr(5,3)+'-'+value.substr(7);
       }
     }
 
