@@ -32,6 +32,9 @@ export class SearchComponent implements OnInit {
   }
 
   search(){
+    if (!this.productSearch){
+      return;
+    }
     this.productsService.get('/Products/search2?orderBy=ProductName&value='+ this.productSearch)
         .subscribe(response=>{
           this.products=<Products[]>response;
