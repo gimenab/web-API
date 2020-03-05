@@ -1,6 +1,34 @@
-.cover{
-  width: 300px;
-  height: 300px;
-  padding-top:25px;
-  object-fit: cover;
+.carousel-item{
+ height:100vh;
+
+
+
+}
+body{
+  color:#2e2f57;
+}
+.carousel{
+margin-top:1%;
+}
+.carousel-caption {
+  top:0;
+  padding-top: 15%;
+}
+
+h1, .title-slide{
+  color:#2e2f57;
+  font-family: 'Barlow', sans-serif;
+  font-size:60px;
+
+
+
+}
+p{
+  font-size: 20px;
+  color:#2e2f57;
+  font-weight: bold;
+}
+
+.img-slider{
+  opacity: 0.75;
 }

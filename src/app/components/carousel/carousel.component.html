@@ -1,4 +1,4 @@
-<div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel" >
+<!-- <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel" >
   <ol class="carousel-indicators">
     <li data-target="#carouselExampleCaptions" data-slide-to="0"></li>
     <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
@@ -9,7 +9,7 @@
       <img [src]="products[0].productLogo | notImage" class="d-block w-100 img " [alt]="products[0].productName">
       <div class="carousel-caption d-none d-md-block">
         <h5>{{products[0].productName}}</h5>
-        <a src=""></a>
+        <a>{{products[0].productWebSite}}</a>
       </div>
     </div>
     <div class="carousel-item">
@@ -35,4 +35,46 @@
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
   </a>
+</div> -->
+<div id="carouselExampleCaptions" class="carousel slide " data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+    <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner">
+  <div class="carousel-item background active">
+     <img src="https://www.anahuac.mx/queretaro/sites/default/files/2017-04/startup-photos.jpg" class="img-slider d-block w-100" alt="...">
+     <div class="carousel-caption d-none d-lg-block text-left">
+      <h1 class="title-slide">Productos</h1>
+      <p>Diseñamos y desarrollamos productos de Software para tu empresa.</p>
+    </div>
+    </div>
+
+     <div class="carousel-item background">
+      <img src="https://static.comunicae.com/photos/notas/1192437/1515412520_metodologias_agiles.jpg" class="img-slider d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block text-left">
+        <h1 class="title-slide">Equipo</h1>
+        <p>Trabajamos en las necesidades de tu empresa para ofrecerte la mejor solución.</p>
+      </div>
+    </div>
+
+    <div class="carousel-item background">
+      <img src="https://devmagazine.co/wp-content/uploads/2018/07/Qu%C3%A9-puedo-hacer-para-iniciar-mi-camino-como-programador.png" class="img-slider-3 d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block text-left ">
+
+        <h1 class="title-slide white"style="color:white">Respaldo</h1>
+        <p style="color:white">Estamos detras de cada producto para que tu que tu equipo cuente con las mejores herramientas.</p>
+      </div>
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+
 </div>
