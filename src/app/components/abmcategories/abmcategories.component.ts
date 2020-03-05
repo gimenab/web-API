@@ -15,7 +15,6 @@ export class ABMCategoriesComponent implements OnInit {
   category: Categories = new Categories();
   categories: Categories[];
   categoryFather: Categories[];
-  selectCategory = [{string : 'categoryName'}];
   message: Message = new Message(Swal);
   createUpdate:boolean =true;
   search:string;
