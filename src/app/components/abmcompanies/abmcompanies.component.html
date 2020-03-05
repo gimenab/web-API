@@ -41,11 +41,9 @@
         <div class="row">
           <div class="col-6">
             <label for="companyFoundationDate">Fecha de fundación:</label>
-<<<<<<< HEAD
-            <input  [disabled]="createUpdate" #FoundationDate="ngModel"  name="FoundationDate" type="date" [(ngModel)]="company.companyFoundationDate" class="form-control" data-date-format="yyyy-MM-dd">
-=======
+
             <input  [disabled]="createUpdate" [max]="date" required #inputDate  name="FoundationDate" type="date" [(ngModel)]="companyFoundationDate" class="form-control">
->>>>>>> 1bc94174e7a580bafd015f60718004a44fcbaf7b
+
 
           </div>
           <div class="col-6">
