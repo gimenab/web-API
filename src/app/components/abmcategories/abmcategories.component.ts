@@ -1,6 +1,6 @@
 import { Categories } from './../../models/categories';
 import { CategoryService } from './../../services/category.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 import { Message } from 'src/app/models/message';
 import Swal from 'sweetalert2';
 import 'sweetalert2/src/sweetalert2.scss';
@@ -21,7 +21,7 @@ export class ABMCategoriesComponent implements OnInit {
   search:string;
 
 
-  constructor(private categoryService: CategoryService) {
+  constructor(private categoryService: CategoryService, private renderer:Renderer2) {
 
    }
 
@@ -97,7 +97,7 @@ export class ABMCategoriesComponent implements OnInit {
          });
 
       }
-  submit(f) {
+  submit(f, name) {
      let aux: Categories;
 
      if (this.category.categoryId == 0) {
@@ -141,6 +141,7 @@ export class ABMCategoriesComponent implements OnInit {
           }
         }
       });
+    this.renderer.removeStyle(name.nativeElement,"border");
     }
 
   }

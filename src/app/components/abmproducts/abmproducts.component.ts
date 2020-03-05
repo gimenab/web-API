@@ -62,14 +62,9 @@ export class ABMProductsComponent implements OnInit {
   }
 
 
-  categoryProduct(product:Products,categoryId:number){
-    let prodCat:ProductCategories;
-    prodCat.categoryId=categoryId;
-    product.categoryID.push(prodCat)
-  }
-
-  add(product:Products){
+  add(product:Products,selectedCategory){
     let prodCat:ProductCategories =new ProductCategories();
+    prodCat.categoryId= selectedCategory.value;
     product.categoryID.push(prodCat);
   }
   remove(product:Products,i:number){
@@ -88,7 +83,6 @@ export class ABMProductsComponent implements OnInit {
     let prodCat:ProductCategories=new ProductCategories();
     this.currencyProd=new Currency();
     this.companiesProd=new Companies();
-    this.product.categoryID.push(prodCat);
   }
 
   delete(id:number){

@@ -14,5 +14,6 @@ export class Products {
 
     constructor(){
       this.productid=0;
+      this.categoryID=[];
   }
 }
