@@ -1,6 +1,6 @@
 import { Companies } from 'src/app/models/companies';
 import { CompanyService } from './../../services/company.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, Renderer2 } from '@angular/core';
 import { Message } from './../../models/Message';
 import Swal from 'sweetalert2'
 import 'sweetalert2/src/sweetalert2.scss'
@@ -20,7 +20,7 @@ export class ABMCompaniesComponent implements OnInit {
   companyFoundationDate:Date;
   date:Date=new Date();
 
-  constructor(private companyService:CompanyService) { }
+  constructor(private companyService:CompanyService, private renderer:Renderer2) { }
 
   ngOnInit(): void {
     this.searchCompanies();
@@ -82,14 +82,14 @@ export class ABMCompaniesComponent implements OnInit {
     })
   }
 
-  submit(f){
+  submit(f,inputDate){
     let aux:Companies;
-
+    this.companyFoundationDate=new Date(inputDate.value);
     if(this.companyFoundationDate<new Date()){
-      console.log('Error');
+      inputDate.nativeElement.style="border: 2px solid red;"
       return;
     }
-
+    this.renderer.removeStyle(inputDate.nativeElement,"border");
     if(this.company.companyId==0){
       this.message.success='create';
       console.log(this.company);

@@ -18,7 +18,6 @@ export class ABMCategoriesComponent implements OnInit {
   selectCategory = [{string : 'categoryName'}];
   message: Message = new Message(Swal);
   createUpdate:boolean =true;
-  fathers:Categories[]=[];
   search:string;
 
 
@@ -32,9 +31,9 @@ export class ABMCategoriesComponent implements OnInit {
        return "";
      }
      else{
-       for(let i=0;this.fathers.length;i++){
-         if(this.fathers[i].categoryId==id){
-           return this.fathers[i].categoryName;
+       for(let i=0;this.categoryFather.length;i++){
+         if(this.categoryFather[i].categoryId==id){
+           return this.categoryFather[i].categoryName;
          };
        }
      }
@@ -47,12 +46,13 @@ export class ABMCategoriesComponent implements OnInit {
 
   ngOnInit(): void {
     this.searchCategorie();
-    this.categoryService.get('/Categories/father').subscribe(response=>{
-      this.fathers=<Categories[]>response;
-    })
+    this.categoryService.get('/Categories/father').subscribe( response => {
+      this.categoryFather =<Categories[]>response;
+    });
   }
 
   create() {
+    this.searchCategorie();
     this.categoryService.get('/Categories/father').subscribe( response => {
       this.categoryFather =<Categories[]>response;
     });
@@ -172,6 +172,10 @@ export class ABMCategoriesComponent implements OnInit {
         console.log(this.categories);
       });
     }
+    this.searchCategorie();
+    this.categoryService.get('/Categories/father').subscribe( response => {
+      this.categoryFather =<Categories[]>response;
+    });
   }
 
 

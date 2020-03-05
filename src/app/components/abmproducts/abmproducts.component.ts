@@ -7,7 +7,7 @@ import { CategoryService } from './../../services/category.service';
 import { Categories } from './../../models/categories';
 import { ProductsService } from './../../services/products.service';
 import { Products } from './../../models/products';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 import { Message } from './../../models/Message';
 import Swal from 'sweetalert2'
 import 'sweetalert2/src/sweetalert2.scss'
@@ -33,7 +33,8 @@ export class ABMProductsComponent implements OnInit {
 
 
   constructor(private productsService:ProductsService, private categoryService:CategoryService,
-              private companyService:CompanyService, private currencyService:CurrencyService) { }
+              private companyService:CompanyService, private currencyService:CurrencyService,
+              private renderer:Renderer2) { }
 
   ngOnInit(): void {
     this.searchProducts();

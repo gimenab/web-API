@@ -33,7 +33,7 @@
     </div>
     <div class="col-md-1"></div>
     <div class="col-md-5 center">
-      <form #f="ngForm" (ngSubmit)="submit(f)">
+      <form #f="ngForm" (ngSubmit)="submit(f,inputDate)">
 
         <label for="companyName">Nombre de la compañía:</label>
         <input [disabled]="createUpdate" #name="ngModel"  name="name" type="text"  placeholder="Nombre de la Compañia" [(ngModel)]="company.companyName" class="form-control">
@@ -41,7 +41,7 @@
         <div class="row">
           <div class="col-6">
             <label for="companyFoundationDate">Fecha de fundación:</label>
-            <input  [disabled]="createUpdate" [max]="date" required #inputDate  name="FoundationDate" type="date" [(ngModel)]="companyFoundationDate" class="form-control">
+            <input  [disabled]="createUpdate" required #inputDate  name="FoundationDate" type="date" [(ngModel)]="company.companyFoundationDate" class="form-control">
 
           </div>
           <div class="col-6">
