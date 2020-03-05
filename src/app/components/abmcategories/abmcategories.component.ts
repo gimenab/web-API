@@ -1,5 +1,5 @@
+import { Categories } from './../../models/categories';
 import { CategoryService } from './../../services/category.service';
-import { Categories } from 'src/app/models/categories';
 import { Component, OnInit } from '@angular/core';
 import { Message } from 'src/app/models/message';
 import Swal from 'sweetalert2';
@@ -21,9 +21,15 @@ export class ABMCategoriesComponent implements OnInit {
   search:string;
 
 
-
   constructor(private categoryService: CategoryService) {
 
+   }
+
+   searchfather(id:number){
+    this.categoryService.getId(id).subscribe((response)=>{
+      let aux:Categories=<Categories>response;
+      return aux.categoryName;
+    })
    }
 
   ngOnInit(): void {

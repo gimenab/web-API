@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { environment } from './../../environments/environment';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 
 // @Injectable({
 //   providedIn: 'root'
 // })
 export class DataService {
+  private options = { headers: new HttpHeaders().set('Content-Type', 'application/json') };
   constructor(private http: HttpClient,private url:string) {
 
   }
@@ -22,7 +23,8 @@ export class DataService {
 
   }
   create(resource){
-    return  this.http.post(environment.URL+this.url, JSON.stringify(resource));
+    console.log('paso');
+    return  this.http.post(environment.URL+this.url, JSON.stringify(resource), this.options);
   }
 
   update(resource){
