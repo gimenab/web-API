@@ -28,7 +28,7 @@ export class DataService {
   }
 
   update(resource){
-    return  this.http.put(environment.URL+this.url, JSON.stringify(resource));
+    return  this.http.put(environment.URL+this.url, JSON.stringify(resource), this.options);
   }
 
   delete(id){

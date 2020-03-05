@@ -1,6 +1,6 @@
 import { CurrencyService } from './../../services/currency.service';
 import { Currency } from 'src/app/models/Currency';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ElementRef, Renderer2 } from '@angular/core';
 import { Message } from 'src/app/models/Message';
 import Swal from 'sweetalert2';
 import 'sweetalert2/src/sweetalert2.scss';
@@ -18,7 +18,7 @@ export class ABMCurrencyComponent implements OnInit {
   message:Message=new Message(Swal);
   search:string;
 
-  constructor(private currencyService:CurrencyService) { }
+  constructor(private currencyService:CurrencyService, private renderer:Renderer2) { }
 
   ngOnInit(): void {
    this.searchCurrency();
@@ -92,7 +92,7 @@ export class ABMCurrencyComponent implements OnInit {
     })
   }
 
-  submit(f){
+  submit(f, code){
     let aux:Currency;
     console.log(this.currency);
     if(this.currency.currencyId==0){
@@ -150,6 +150,7 @@ export class ABMCurrencyComponent implements OnInit {
         }
       })
     }
+    this.renderer.removeStyle(code.nativeElement,"border");
 
   }
 
