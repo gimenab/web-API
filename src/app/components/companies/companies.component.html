@@ -14,18 +14,20 @@
     <!-- boton para volver  -->
     <button type="button" (click)="onClickButton()" class="btn btn-dark">Volver a empresas</button>
   </div>
+  <br>
   <!-- empresa (img y datos) -->
   <div class="media">
-    <img [src]="company.companyLogo | notImage" class="mr-3"  >
+    <img [src]="company.companyLogo | notImage" class="mr-3"  width=300px height=300px >
     <div class="media-body">
-      <h5 class="mt-0">{{company.companyName}}</h5>
-      <p>Descripcion: {{company.companyDescription}}</p>
-      <p>website:</p> <a>{{company.companyWebSite}}</a>
-      <p>adress: {{company.companyAddress}}</p>
-      <p>companyFoundationDate: {{date.getDay()+1}}/{{date.getMonth()+1}}/{{date.getFullYear()}}</p>
-      <p>companyCity: {{company.companyCity}}</p>
-      <p>companyEmail: {{company.companyEmail}} </p>
-      <p>companyPhone: {{company.companyPhone}}</p>
+      <hr>
+      <h3 class="mt-0">{{company.companyName}}</h3>
+      <p>{{company.companyDescription}}</p>
+      <p>Fecha de fundación: {{date.getDay()+1}}/{{date.getMonth()+1}}/{{date.getFullYear()}}</p>
+      <p>Domicilio: {{company.companyAddress}}</p>
+      <p>Ciudad: {{company.companyCity}}</p>
+      <p>Sitio web: <a href="{{company.companyWebSite}}"><p>{{company.companyWebSite}}</p></a></p>
+      <p>Email: {{company.companyEmail}} </p>
+      <p>Teléfono: {{company.companyPhone}}</p>
     </div>
   </div>
 </div>
