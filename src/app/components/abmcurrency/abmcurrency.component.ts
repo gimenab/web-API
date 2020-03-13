@@ -1,7 +1,7 @@
 import { CurrencyService } from './../../services/currency.service';
 import { Currency } from 'src/app/models/Currency';
 import { Component, OnInit,ElementRef, Renderer2 } from '@angular/core';
-import { Message } from 'src/app/models/Message';
+import { Message2 } from 'src/app/models/message2';
 import Swal from 'sweetalert2';
 import 'sweetalert2/src/sweetalert2.scss';
 
@@ -15,7 +15,7 @@ export class ABMCurrencyComponent implements OnInit {
   currency:Currency= new Currency();
   currencies:Currency[];
   createUpdate:boolean=true;
-  message:Message=new Message(Swal);
+  message:Message2=new Message2(Swal);
   search:string;
 
   constructor(private currencyService:CurrencyService, private renderer:Renderer2) { }
@@ -36,8 +36,12 @@ export class ABMCurrencyComponent implements OnInit {
       })
     }else{
       this.currencyService.get("/Currencies/search?orderBy=CurrencyDescription&value="+this.search).subscribe(response=>{
-        this.currencies=<Currency[]>response;
-        console.log(this.currencies);
+
+        if(!response){
+          return this.search="";
+          }
+          this.currencies=<Currency[]>response;
+
       })
     }
   }

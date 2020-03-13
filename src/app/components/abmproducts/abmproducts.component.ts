@@ -7,8 +7,8 @@ import { CategoryService } from './../../services/category.service';
 import { Categories } from './../../models/categories';
 import { ProductsService } from './../../services/products.service';
 import { Products } from './../../models/products';
-import { Component, OnInit, Renderer2 } from '@angular/core';
-import { Message } from './../../models/Message';
+import { Component, OnInit } from '@angular/core';
+import { Message2 } from '../../models/message2';
 import Swal from 'sweetalert2'
 import 'sweetalert2/src/sweetalert2.scss'
 
@@ -22,44 +22,57 @@ export class ABMProductsComponent implements OnInit {
   product:Products= new Products();
   products:Products[];
   createUpdate:boolean=true;
-  message:Message=new Message(Swal);
+  message:Message2=new Message2(Swal);
   categories:Categories[]=[];
   companies:Companies[]=[];
   search:string;
   currencies:Currency[]=[];
-  currency:Currency;
-  currencyProd:Currency;
-  companiesProd:Companies;
+
 
 
   constructor(private productsService:ProductsService, private categoryService:CategoryService,
-              private companyService:CompanyService, private currencyService:CurrencyService,
-              private renderer:Renderer2) { }
+              private companyService:CompanyService, private currencyService:CurrencyService) {
+               }
 
   ngOnInit(): void {
-    this.searchProducts();
+    this.companyService.getAll().subscribe(response=>{
+      this.companies=<Companies[]>response;
+    })
+    this.currencyService.getAll().subscribe(response=>{
+      this.currencies=<Currency[]>response;
+    })
     this.categoryService.get('/Categories/children').subscribe(response=>{
       this.categories =<Categories[]>response;
     })
+    this.searchProducts();
   }
 
   searchProducts(){
     if(!this.search){
-      // this.productsService.getAll().subscribe(response=>{
-      //   this.products=<Products[]>response;
-      // })
+      this.productsService.getAll().subscribe(response=>{
+        this.products=<Products[]>response;
+      })
     }else{
       this.productsService.get("/Products/search?orderBy=ProductName&value="+this.search).subscribe(response=>{
+        if(!response){
+        return this.search="";
+        }
         this.products=<Products[]>response;
       })
     }
   }
 
   getcode(id:number){
-    this.currencyService.getId(id).subscribe(response=>{
-      this.currency=<Currency>response;
-      return this.currency.currencyCode;
-    })
+    if(id==0){
+      return "";
+    }
+    else{
+      for(let i=0;this.currencies.length;i++){
+        if(this.currencies[i].currencyId==id){
+          return this.currencies[i].currencyCode;
+        };
+      }
+    }
   }
 
 
@@ -73,25 +86,19 @@ export class ABMProductsComponent implements OnInit {
     product.categoryID.push(prodCat);
   })
   }
+
+
   remove(product:Products,i:number){
     product.categoryID.splice(i,1);
   }
 
   create(){
-    this.companyService.getAll().subscribe(response=>{
-      this.companies=<Companies[]>response;
-    })
-    this.currencyService.getAll().subscribe(response=>{
-      this.currencies=<Currency[]>response;
-    })
     this.product=new Products();
     this.createUpdate=false;
-    let prodCat:ProductCategories=new ProductCategories();
-    this.currencyProd=new Currency();
-    this.companiesProd=new Companies();
   }
 
-  delete(id:number){
+  deleteProduct(id:number){
+    this.createUpdate=true;
     this.message.success='delete';
     Swal.fire({
       title: '¿Esta seguro que desea eliminar?',
@@ -125,36 +132,17 @@ export class ABMProductsComponent implements OnInit {
       }
     })
   }
-  ComAndCurSearch(selectedCategory,selectCompany){
-    this.product.companyId=selectCompany.value;
-    this.product.currencyId=selectedCategory.value;
+
+
+  update(product:Products){
+
+    this.product=product;
+    this.createUpdate=false;
   }
 
-  Update(id:number,selectedCategory,selectCompany){
-    this.companyService.getAll().subscribe(response=>{
-      this.companies=<Companies[]>response;
-    })
-    this.currencyService.getAll().subscribe(response=>{
-      this.currencies=<Currency[]>response;
-    })
+  submit(f){
+    console.log(this.product);
     let aux:Products;
-    this.message.success="update";
-    this.productsService.get('/Products/'+id).subscribe(response=>{
-      aux=<Products>response;
-      if(aux.productid==-1){
-        this.message.alertError();
-        return;
-      }
-      this.product=aux;
-      selectCompany.value=this.product.companyId;
-      selectedCategory.value= this.product.currencyId;
-      this.createUpdate=false;
-    })
-  }
-
-  submit(f,currency,selectCompany){
-    let aux:Products;
-    this.ComAndCurSearch(currency,selectCompany);
     if(this.product.productid==0){
       this.message.success='create';
       this.productsService.create(this.product).subscribe(response=>{

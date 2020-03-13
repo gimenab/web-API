@@ -44,7 +44,7 @@
           </div>
 
           <label for="currencyDescription">Descripcion:</label>
-          <input [disabled]="createUpdate" #description="ngModel"  name="description" type="text" [(ngModel)]="currency.currencyDescription" class="form-control">
+          <input [disabled]="createUpdate" #description="ngModel" required name="description" type="text" [(ngModel)]="currency.currencyDescription" class="form-control">
 
           <br>
         <button class="btn btn-primary" [disabled]="!f.valid">Cargar</button>

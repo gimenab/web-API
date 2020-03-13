@@ -1,7 +1,7 @@
 import { Categories } from './../../models/categories';
 import { CategoryService } from './../../services/category.service';
 import { Component, OnInit, Renderer2 } from '@angular/core';
-import { Message } from 'src/app/models/message';
+import { Message2 } from 'src/app/models/message2';
 import Swal from 'sweetalert2';
 import 'sweetalert2/src/sweetalert2.scss';
 
@@ -15,7 +15,7 @@ export class ABMCategoriesComponent implements OnInit {
   category: Categories = new Categories();
   categories: Categories[];
   categoryFather: Categories[];
-  message: Message = new Message(Swal);
+  message: Message2 = new Message2(Swal);
   createUpdate:boolean =true;
   search:string;
 
@@ -25,7 +25,6 @@ export class ABMCategoriesComponent implements OnInit {
    }
 
    searchfather(id:number){
-     console.log(id)
      if(id==0){
        return "";
      }
@@ -36,24 +35,19 @@ export class ABMCategoriesComponent implements OnInit {
          };
        }
      }
-    // this.categoryService.getId(id).subscribe((response)=>{
-    //   let aux:Categories=<Categories>response;
-    //   console.log(aux.categoryName);
-    //   return aux.categoryName;
-    // })
    }
 
   ngOnInit(): void {
     this.searchCategorie();
     this.categoryService.get('/Categories/father').subscribe( response => {
-      this.categoryFather =<Categories[]>response;
+      this.categoryFather = <Categories[]>response;
     });
   }
 
   create() {
     this.searchCategorie();
     this.categoryService.get('/Categories/father').subscribe( response => {
-      this.categoryFather =<Categories[]>response;
+      this.categoryFather = <Categories[]>response;
     });
     this.category = new Categories();
     this.createUpdate = false;
@@ -167,11 +161,13 @@ export class ABMCategoriesComponent implements OnInit {
       })
     }else{
       this.categoryService.get("/Categories/search?orderBy=CategoryName&value="+this.search).subscribe(response=>{
+        if(!response){
+          return this.search="";
+        }
         this.categories=<Categories[]>response;
         console.log(this.categories);
       });
     }
-    this.searchCategorie();
     this.categoryService.get('/Categories/father').subscribe( response => {
       this.categoryFather =<Categories[]>response;
     });

@@ -1,7 +1,7 @@
 import { Companies } from 'src/app/models/companies';
 import { CompanyService } from './../../services/company.service';
 import { Component, OnInit, ElementRef, Renderer2 } from '@angular/core';
-import { Message } from './../../models/Message';
+import { Message2 } from '../../models/message2';
 import Swal from 'sweetalert2'
 import 'sweetalert2/src/sweetalert2.scss'
 
@@ -15,7 +15,7 @@ export class ABMCompaniesComponent implements OnInit {
   company:Companies= new Companies();
   companies:Companies[];
   createUpdate:boolean=true;
-  message:Message=new Message(Swal);
+  message:Message2=new Message2(Swal);
   search:string;
   companyFoundationDate:Date;
   date:Date=new Date();
@@ -35,7 +35,7 @@ export class ABMCompaniesComponent implements OnInit {
     this.message.success='delete';
     Swal.fire({
       title: '¿Esta seguro que desea eliminar?',
-      text: "Considere que al eliminar afectara los productos que aun posean este tipo de moneda",
+      text: "Considere que al eliminar afectara los productos que aun posean esta empresa",
       icon: 'warning',
       showClass: {
         popup: 'animated fadeInDown faster'
@@ -147,8 +147,12 @@ export class ABMCompaniesComponent implements OnInit {
       })
     }else{
       this.companyService.get("/Companies/search?orderBy=CompanyName&value="+this.search).subscribe(response=>{
+        if(!response){
+          return this.search="";
+          }
+
         this.companies=<Companies[]>response;
-        console.log(this.companies);
+
       });
     }
   }
